@@ -1,26 +1,25 @@
-{ 
-  "donations":{
-    "donation0":{
-      "task":"pick up donation at Panera",
+{
+  "donations": {
+    "donation0": {
+      "task": "pick up donation at Panera",
       "isCompleted": true,
-      "assignedTo":"uid", //(who is going to do the pick up - set to empty string)
-      "uid":"",//(assigned when someone creates pickup on app)
-      "address":""
+      "assignedTo": "uid",
+      "uid": "",
+      "address": ""
     },
-    "donation1":{
-      "task":"pick up donation at Happy Asian Bistro",
+    "donation1": {
+      "task": "pick up donation at Happy Asian Bistro",
       "isCompleted": false,
-      "assignedTo":"Volunteer2",
-      "uid":"",
-     "address":""
+      "assignedTo": "uid",
+      "uid": "",
+      "address": ""
     },
-    "donation2":{
-      "task":"pick up donation at X restaurant",
+    "donation2": {
+      "task": "pick up donation at X restaurant",
       "isCompleted": false,
-      "assignedTo":"Volunteer3",
-      "uid":"",
-     "address":""
+      "assignedTo": "uid",
+      "uid": "",
+      "address": ""
+    }
+  }
 }
-  },
-}
-		
