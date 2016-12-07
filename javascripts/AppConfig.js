@@ -6,7 +6,7 @@ let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
 	} else {
 		reject();
 	}
-})
+});
 
 app.run(function($rootScope, $location, FIREBASE_CONFIG, AuthFactory){
   firebase.initializeApp(FIREBASE_CONFIG);
