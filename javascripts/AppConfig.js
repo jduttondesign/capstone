@@ -37,28 +37,28 @@ app.config(function($routeProvider){
 		})
 		.when('/boards/list', {
 			templateUrl: 'partials/general-view.html',
-			controller: 'GeneralViewCtrl',
-			resolve: {isAuth}
+			controller: 'GeneralViewCtrl'
+			// resolve: {isAuth}
 		})
 		.when('/boards/new', {
 			templateUrl: 'partials/board-new.html',
-			controller: 'BoardNewCtrl',
-			resolve: {isAuth}
+			controller: 'BoardNewCtrl'
+			// resolve: {isAuth}
 		})
 		.when('/boards/view/:id', {
 			templateUrl: 'partials/board-view.html',
-			controller: 'BoardViewCtrl',
-			resolve: {isAuth}
+			controller: 'BoardViewCtrl'
+			// resolve: {isAuth}
 		})
 		.when('/boards/edit/:id', {
 			templateUrl: 'partials/board-new.html',
-			controller:'BoardEditCtrl',
-			resolve: {isAuth}
+			controller:'BoardEditCtrl'
+			// resolve: {isAuth}
 		})
 		.when('/logout', {
 			templateUrl: 'partials/auth.html',
-			controller: 'AuthCtrl',
-			resolve: {isAuth}
+			controller: 'AuthCtrl'
+			// resolve: {isAuth}
 		})
 		.otherwise('/auth');
 });

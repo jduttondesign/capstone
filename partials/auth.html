@@ -1,62 +1,38 @@
-"use strict";
-
-app.factory("AuthFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
-  let currentUserData = null;
-
-//Firebase: Determine if user is authenticated.
-  let isAuthenticated = () => {
-      return firebase.auth().currentUser ? true : false;
-  };
-
-//Firebase: Return email, UID for user that is currently logged in.
-  let getUser = () => {
-    return firebase.auth().currentUser;
-  };
-
-// Kills browser cookie with firebase credentials
-  let logout = () => {
-    firebase.auth().signOut();
-  };
-
-//Firebase: Use input credentials to authenticate user.
-  let authenticate = (credentials) => {
-    return $q((resolve, reject) => {
-      firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
-        .then((authData) =>{
-          resolve(authData);
-        })
-        .catch((error)=>{
-          reject(error);
-        });
-    });
-  };
-
-//Firebase: Register a new user with email and password
-  let registerWithEmail = (user) => {
-    return $q((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-        .then((authData) =>{
-          resolve(authData);
-        })
-        .catch((error)=>{
-          reject(error);
-        });
-    });
-  };
-
-//Firebase: GOOGLE - Use input credentials to authenticate user.
-  let authenticateGoogle = () => {
-    return $q((resolve, reject) => {
-      var provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth().signInWithPopup(provider)
-        .then((authData) => {
-          currentUserData = authData.user;
-          resolve(currentUserData);
-        }).catch((error)=> {
-          reject(error);
-        });
-    });
-  };
-
-  return {isAuthenticated:isAuthenticated, getUser:getUser, logout:logout, registerWithEmail:registerWithEmail, authenticate:authenticate, authenticateGoogle: authenticateGoogle};
-});
+<div class="col-xs-6 col-xs-offset-3">
+  <div class="row">
+    <button class="btn btn-info col-xs-6" ng-click="setLoginContainer()">Login</button>
+    <button class="btn btn-success col-xs-6" ng-click="setRegisterContainer()">Register</button>
+  </div>
+  <div class="row">
+  <form ng-show="loginContainer">
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" class="col-xs-offset-1 col-xs-10" placeholder="Email address" ng-model="login.email" required autofocus>  
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="col-xs-offset-1 col-xs-10" placeholder="Password" ng-model="login.password" required> 
+    </div>
+    <div class="form-group">
+      <a class="btn btn-lg btn-info col-xs-offset-1 col-xs-10" ng-click="loginUser(login)">Submit Login</a>
+    </div>
+  </form>
+  <form ng-show="registerContainer">
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" class="col-xs-offset-1 col-xs-10" placeholder="Email address" ng-model="register.email" required autofocus> 
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="col-xs-offset-1 col-xs-10" placeholder="Password" ng-model="register.password" required>  
+    </div>
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" class="col-xs-offset-1 col-xs-10" placeholder="Username" ng-model="register.username" required>  
+    </div>
+    <div class="form-group">
+      <a class="btn btn-lg btn-success col-xs-offset-1 col-xs-10" ng-click="registerUser(register)">Submit Registration</a>
+    </div>
+  </form>
+  </div>
+</div>
