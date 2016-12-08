@@ -1,6 +1,6 @@
 "use strict";
 
-app.factory("ItemFactory", function($q, $http, FIREBASE_CONFIG){
+app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG){
 
   var getItemList = function(userId){
     return $q((resolve, reject) => {

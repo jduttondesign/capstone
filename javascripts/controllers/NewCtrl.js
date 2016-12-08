@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("ItemNewCtrl", function($scope, $rootScope, $location, ItemFactory){
+app.controller("NewCtrl", function($scope, $rootScope, $location, DonationFactory){
   	$scope.newTask = {};
 
 	$scope.addNewItem = function(){

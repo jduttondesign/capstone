@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("ItemListCtrl", function($scope, $rootScope, ItemFactory){
+app.controller("ListCtrl", function($scope, $rootScope, DonationFactory){
   $scope.items = [];
 
   let getItems = function(){
@@ -20,7 +20,7 @@ app.controller("ItemListCtrl", function($scope, $rootScope, ItemFactory){
   $scope.inputChange = function(thingy){
     ItemFactory.editItem(thingy).then(function(response){
       getItems();
-    })
+    });
   };
 
 });
