@@ -4,7 +4,7 @@ app.controller("ListCtrl", function($scope, $rootScope, DonationFactory){
   $scope.items = [];
 
   let getItems = function(){
-    ItemFactory.getItemList($rootScope.user.uid).then(function(fbItems){
+    DonationFactory.getItemList($rootScope.user.uid).then(function(fbItems){
       $scope.items = fbItems;
     });
   };
@@ -12,7 +12,7 @@ app.controller("ListCtrl", function($scope, $rootScope, DonationFactory){
   getItems();
 
   $scope.deleteItem = function(itemId){
-    ItemFactory.deleteItem(itemId).then(function(response){
+    DonationFactory.deleteItem(itemId).then(function(response){
       getItems();
     });
   };

@@ -33,31 +33,31 @@ app.config(function($routeProvider){
 	$routeProvider
 		.when('/auth', {
 			templateUrl: 'partials/auth.html',
-			controller:'AuthCtrl',
+			controller:'AuthCtrl'
 		})
-		.when('/list', {
+		.when('/volunteer-list', {
 			templateUrl: 'partials/volunteer-list.html',
-			controller: 'ListCtrl',
+			controller: 'ListCtrl'
 			// resolve: {isAuth}
 		})
 		.when('/new', {
 			templateUrl: 'partials/donation-new.html',
-			controller: 'NewCtrl',
+			controller: 'NewCtrl'
 			// resolve: {isAuth}
 		})
 		.when('/view/:id', {
 			templateUrl: 'partials/donation-view.html',
-			controller: 'DonationCtrl',
+			controller: 'DonationCtrl'
 			// resolve: {isAuth}
 		})
 		.when('/edit/:id', {
 			templateUrl: 'partials/donation-edit.html',
-			controller:'EditCtrl',
+			controller:'EditCtrl'
 			// resolve: {isAuth}
 		})
 		.when('/logout', {
 			templateUrl: 'partials/auth.html',
-			controller: 'AuthCtrl',
+			controller: 'AuthCtrl'
 			// resolve: {isAuth}
 		})
 		.otherwise('/auth');
