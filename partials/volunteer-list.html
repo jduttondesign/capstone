@@ -1,27 +1,27 @@
 
 
-<div ng-controller="TodoCtrl" class="container" ng-app="TodoApp">
+<div ng-controller="DonationCtrl" class="container" ng-app="DonationApp">
 
 <h2>Donation list using AngularJS and Firebase</h2>
 
 <!--ADD ITEM FORM-->
-<form name="todoForm">
+<form name="donationForm">
 
     <div>
         <input type="text"
-               name="todoNameField"
-               ng-model="todoName"
+               name="donationNameField"
+               ng-model="donationName"
                placeholder="Add new task (min 3 chars)"
                required ng-minlength="3"
                class="form-control"
-               ng-keyup="($event.keyCode == 13 && todoName.length > 2) ? addItem() : return"
+               ng-keyup="($event.keyCode == 13 && donationName.length > 2) ? addItem() : return"
                style="margin-bottom: 10px"
                 />
 
-        <button ng-click="addTodo()"
-                ng-hide="myForm.todoNameField.$invalid"
+        <button ng-click="addDonation()"
+                ng-hide="myForm.donationNameField.$invalid"
                 class="btn btn-primary" type="button"
-                >Save Todo
+                >Save Donation
         </button>
     </div>
 
@@ -31,75 +31,75 @@
 
 <!--TODO LIST-->
 
-<h4 ng-show="(todos | filter:{status: 'pending'}).length">Pending</h4>
+<h4 ng-show="(donations | filter:{status: 'pending'}).length">Pending</h4>
 
-<div ng-repeat="todo in todos | filter:{status: 'pending'}"
+<div ng-repeat="donation in donations | filter:{status: 'pending'}"
      class="row list-item">
 
     <div class="col-md-6">
 
         <!--TODO LABEL-->
-        <span>{{todo.name}}</span>
+        <span>{{donation.name}}</span>
     </div>
     <div class="col-md-6 text-right">
         <!--START TODO BUTTON-->
         <a class="btn btn-warning"
-           ng-click="startTodo($index, todo)">
+           ng-click="startDonation($index, donation)">
             Start
         </a>
 
         <!--DELETE TODO BUTTON-->
         <a class="btn btn-danger"
-           ng-click="removeTodo($index, todo)">
-            <i class="glyphicon glyphicon-remove"></i> Remove
+           ng-click="removeDonation($index, donation)">
+            <i class="glyphicon glyphicon-remove"></i> Remove Donation
         </a>
 
     </div>
 
 </div>
 
-<h4 ng-show="(todos | filter:{status: 'in progress'}).length">In Progress</h4>
+<h4 ng-show="(donations | filter:{status: 'in progress'}).length">In Progress</h4>
 
-<div ng-repeat="todo in todos | filter:{status: 'in progress'}"
+<div ng-repeat="donation in donations | filter:{status: 'in progress'}"
      class="row list-item bg-warning">
 
     <div class="col-md-6">
 
         <!--TODO LABEL-->
-        <span>{{todo.name}}</span>
+        <span>{{donation.name}}</span>
     </div>
     <div class="col-md-6 text-right">
         <!--COMPLETED TODO BUTTON-->
         <a class="btn btn-primary"
-           ng-click="completeTodo($index, todo)">
-            <i class="glyphicon glyphicon-ok"></i> Complete
+           ng-click="completeDonation($index, donation)">
+            <i class="glyphicon glyphicon-ok"></i> Complete Donation
         </a>
 
         <!--DELETE TODO BUTTON-->
         <a class="btn btn-danger"
-           ng-click="removeTodo($index, todo)">
-            <i class="glyphicon glyphicon-remove"></i> Remove
+           ng-click="removeDonation($index, donation)">
+            <i class="glyphicon glyphicon-remove"></i> Remove Donation
         </a>
 
     </div>
 
 </div>
 
-<h4 ng-show="(todos | filter:{status: 'complete'}).length">Completed</h4>
+<h4 ng-show="(donations | filter:{status: 'complete'}).length">Completed</h4>
 
-<div ng-repeat="todo in todos | filter:{status: 'complete'}"
+<div ng-repeat="donation in donations | filter:{status: 'complete'}"
      class="row list-item bg-success">
 
     <div class="col-md-6">
 
         <!--TODO LABEL-->
-        <span>{{todo.name}}</span>
+        <span>{{donation.name}}</span>
     </div>
     <div class="col-md-6 text-right">
 
         <!--DELETE TODO BUTTON-->
         <a class="btn btn-danger"
-           ng-click="removeTodo($index, todo)">
+           ng-click="removeDonation($index, donation)">
             <i class="glyphicon glyphicon-remove"></i> Remove
         </a>
 
@@ -107,9 +107,9 @@
 
 </div>
 
-<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="app.js"></script>
-</div>
+</div> -->
 <!-- <div class = "row">
 	<div class="col-xs-6 col-xs-offset-3">
 		<div class="input-group">

@@ -18,7 +18,7 @@ app.controller("ListCtrl", function($scope, $rootScope, DonationFactory){
   };
 
   $scope.inputChange = function(thingy){
-    ItemFactory.editItem(thingy).then(function(response){
+    DonationFactory.editItem(thingy).then(function(response){
       getItems();
     });
   };

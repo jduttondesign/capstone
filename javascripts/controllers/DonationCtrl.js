@@ -13,10 +13,10 @@
 
 'use strict';
 
-angular.module('myApp.addPost', ['ngRoute'])
+angular.module('DonationApp.addPost', ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/addPost', {
-            templateUrl: 'addPost/volunteer-list.html',
+        $routeProvider.when('/partials', {
+            templateUrl: 'partials/volunteer-list.html',
             controller: 'DonationCtrl'
         });
     }]).controller('DonationCtrl', ['$scope','$firebase',function($scope,$firebase) {
@@ -24,7 +24,7 @@ angular.module('myApp.addPost', ['ngRoute'])
         $scope.AddPost = function(){
             var title = $scope.article.title;
             var post = $scope.article.post;
-            var firebaseObj = new Firebase("https://xxxxxx.firebaseio.com/");
+            var firebaseObj = new Firebase("https://capstone-32354.firebaseio.com");
             var fb = $firebase(firebaseObj);
             fb.$push({ title: title,post: post}).then(function(ref) {
                 console.log(ref);

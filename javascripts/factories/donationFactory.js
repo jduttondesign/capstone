@@ -1,64 +1,63 @@
 "use strict";
-var todoApp = angular.module('TodoApp', ['firebase']);
+var DonationApp = angular.module('DonationApp', ['firebase']);
 
-
-todoApp.controller('TodoCtrl', ['$scope', '$firebaseArray',
+DonationApp.controller('DonationCtrl', ['$scope', '$firebaseArray',
     function($scope, $firebaseArray) {
         
     // CREATE A FIREBASE REFERENCE
-    var todosRef = new Firebase('https://teamtododemo.firebaseio.com/');
+    var donationRef = new Firebase('https://capstone-32354.firebaseio.com');
 
-    // GET TODOS AS AN ARRAY
-    $scope.todos = $firebaseArray(todosRef);
+    // GET Donation AS AN ARRAY
+    $scope.donation = $firebaseArray(donationRef);
 
-    // ADD TODO ITEM METHOD
-    $scope.addTodo = function () {
+    // ADD Donation ITEM METHOD
+    $scope.addDonation = function () {
 
         // CREATE A UNIQUE ID
         var timestamp = new Date().valueOf();
 
-        $scope.todos.$add({
+        $scope.donations.$add({
             id: timestamp,
-            name: $scope.todoName,
+            name: $scope.donationName,
             status: 'pending'
         });
 
-        $scope.todoName = "";
+        $scope.donationName = "";
 
     };
 
     // REMOVE TODO ITEM METHOD
-    $scope.removeTodo = function (index, todo) {
+    $scope.removeDonation = function (index, donation) {
         
         // CHECK THAT ITEM IS VALID
-        if (todo.id === undefined)return;
+        if (donation.id === undefined)return;
 
         // FIREBASE: REMOVE ITEM FROM LIST
-        $scope.todos.$remove(todo);
+        $scope.donations.$remove(donation);
 
     };
 
     // MARK TODO AS IN PROGRESS METHOD
-    $scope.startTodo = function (index, todo) {
+    $scope.startDonation = function (index, donation) {
 
         // CHECK THAT ITEM IS VALID
-        if (todo.id === undefined)return;
+        if (donation.id === undefined)return;
 
         // UPDATE STATUS TO IN PROGRESS AND SAVE
-        todo.status = 'in progress';
-        $scope.todos.$save(todo);
+        donation.status = 'in progress';
+        $scope.donations.$save(donation);
 
     };
 
     // MARK TODO AS COMPLETE METHOD
-    $scope.completeTodo = function (index, todo) {
+    $scope.completeDonation = function (index, donation) {
 
         // CHECK THAT ITEM IS VALID
-        if (todo.id === undefined)return;
+        if (donation.id === undefined)return;
 
         // UPDATE STATUS TO COMPLETE AND SAVE
-        todo.status = 'complete';
-        $scope.todos.$save(todo);
+        donation.status = 'complete';
+        $scope.donations.$save(donation);
     };
 
 }]);
@@ -83,67 +82,67 @@ todoApp.controller('TodoCtrl', ['$scope', '$firebaseArray',
 //     });
 //   };
 
-  var postNewItem = function(newItem){
-    return $q((resolve, reject) =>{
-      $http.post(`${FIREBASE_CONFIG.databaseURL}/items.json`,
-         JSON.stringify({
-            assignedTo: newItem.assignedTo,
-            isCompleted: newItem.isCompleted,
-            task: newItem.task,
-            uid: newItem.uid
-         })
-       )
-        .success(function(postResponse){
-          resolve(postResponse);
-        })
-        .error(function(postError){
-          reject(postError);
-        });
-    });
-  };
+//   var postNewItem = function(newItem){
+//     return $q((resolve, reject) =>{
+//       $http.post(`${FIREBASE_CONFIG.databaseURL}/items.json`,
+//          JSON.stringify({
+//             assignedTo: newItem.assignedTo,
+//             isCompleted: newItem.isCompleted,
+//             task: newItem.task,
+//             uid: newItem.uid
+//          })
+//        )
+//         .success(function(postResponse){
+//           resolve(postResponse);
+//         })
+//         .error(function(postError){
+//           reject(postError);
+//         });
+//     });
+//   };
 
-  var deleteItem = function(itemId){
-    return $q((resolve, reject) => {
-      $http.delete(`${FIREBASE_CONFIG.databaseURL}/items/${itemId}.json`)
-      .success(function(deleteResponse){
-        resolve(deleteResponse);
-      })
-      .error(function(deleteError){
-        reject(deleteError);
-      });
-    });
-  };
+//   var deleteItem = function(itemId){
+//     return $q((resolve, reject) => {
+//       $http.delete(`${FIREBASE_CONFIG.databaseURL}/items/${itemId}.json`)
+//       .success(function(deleteResponse){
+//         resolve(deleteResponse);
+//       })
+//       .error(function(deleteError){
+//         reject(deleteError);
+//       });
+//     });
+//   };
 
-  var getSingleItem = function(itemId){
-    return $q((resolve, reject) => {
-      $http.get(`${FIREBASE_CONFIG.databaseURL}/items/${itemId}.json`)
-      .success(function(getSingleResponse){
-        resolve(getSingleResponse);
-      })
-      .error(function(getSingleError){
-        reject(getSingleError);
-      });
-    });
-  };
+//   var getSingleItem = function(itemId){
+//     return $q((resolve, reject) => {
+//       $http.get(`${FIREBASE_CONFIG.databaseURL}/items/${itemId}.json`)
+//       .success(function(getSingleResponse){
+//         resolve(getSingleResponse);
+//       })
+//       .error(function(getSingleError){
+//         reject(getSingleError);
+//       });
+//     });
+//   };
 
-  var editItem = function(editItem){
-    return $q((resolve, reject) =>{
-      $http.put(`${FIREBASE_CONFIG.databaseURL}/items/${editItem.id}.json`,
-         JSON.stringify({
-            assignedTo: editItem.assignedTo,
-            isCompleted: editItem.isCompleted,
-            task: editItem.task,
-            uid: editItem.uid
-         })
-       )
-        .success(function(editResponse){
-          resolve(editResponse);
-        })
-        .error(function(editError){
-          reject(editError);
-        });
-    });
-  };
+//   var editItem = function(editItem){
+//     return $q((resolve, reject) =>{
+//       $http.put(`${FIREBASE_CONFIG.databaseURL}/items/${editItem.id}.json`,
+//          JSON.stringify({
+//             assignedTo: editItem.assignedTo,
+//             isCompleted: editItem.isCompleted,
+//             task: editItem.task,
+//             uid: editItem.uid
+//          })
+//        )
+//         .success(function(editResponse){
+//           resolve(editResponse);
+//         })
+//         .error(function(editError){
+//           reject(editError);
+//         });
+//     });
+//   };
 
-  return {getItemList:getItemList, postNewItem:postNewItem, deleteItem:deleteItem, getSingleItem:getSingleItem, editItem:editItem};
-});
+//   return {getItemList:getItemList, postNewItem:postNewItem, deleteItem:deleteItem, getSingleItem:getSingleItem, editItem:editItem};
+// });
