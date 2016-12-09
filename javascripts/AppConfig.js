@@ -1,4 +1,5 @@
 "use strict";
+console.log("loaded AppConfig");
 
 let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
 	if(AuthFactory.isAuthenticated()){
@@ -35,7 +36,7 @@ app.config(function($routeProvider){
 			templateUrl: 'partials/auth.html',
 			controller:'AuthCtrl'
 		})
-		.when('/volunteer-list', {
+		.when('/list', {
 			templateUrl: 'partials/volunteer-list.html',
 			controller: 'ListCtrl'
 			// resolve: {isAuth}

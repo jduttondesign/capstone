@@ -1,4 +1,5 @@
 "use strict";
+console.log("loaded ListCtrl");
 
 app.controller("ListCtrl", function($scope, $rootScope, DonationFactory){
   $scope.items = [];

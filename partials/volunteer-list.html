@@ -1,116 +1,10 @@
+<h2>Hello</h2>
 
-
-<div ng-controller="DonationCtrl" class="container" ng-app="DonationApp">
-
-<h2>Donation list using AngularJS and Firebase</h2>
-
-<!--ADD ITEM FORM-->
-<form name="donationForm">
-
-    <div>
-        <input type="text"
-               name="donationNameField"
-               ng-model="donationName"
-               placeholder="Add new task (min 3 chars)"
-               required ng-minlength="3"
-               class="form-control"
-               ng-keyup="($event.keyCode == 13 && donationName.length > 2) ? addItem() : return"
-               style="margin-bottom: 10px"
-                />
-
-        <button ng-click="addDonation()"
-                ng-hide="myForm.donationNameField.$invalid"
-                class="btn btn-primary" type="button"
-                >Save Donation
-        </button>
-    </div>
-
-</form>
-
-    <hr />
-
-<!--TODO LIST-->
-
-<h4 ng-show="(donations | filter:{status: 'pending'}).length">Pending</h4>
-
-<div ng-repeat="donation in donations | filter:{status: 'pending'}"
-     class="row list-item">
-
-    <div class="col-md-6">
-
-        <!--TODO LABEL-->
-        <span>{{donation.name}}</span>
-    </div>
-    <div class="col-md-6 text-right">
-        <!--START TODO BUTTON-->
-        <a class="btn btn-warning"
-           ng-click="startDonation($index, donation)">
-            Start
-        </a>
-
-        <!--DELETE TODO BUTTON-->
-        <a class="btn btn-danger"
-           ng-click="removeDonation($index, donation)">
-            <i class="glyphicon glyphicon-remove"></i> Remove Donation
-        </a>
-
-    </div>
-
-</div>
-
-<h4 ng-show="(donations | filter:{status: 'in progress'}).length">In Progress</h4>
-
-<div ng-repeat="donation in donations | filter:{status: 'in progress'}"
-     class="row list-item bg-warning">
-
-    <div class="col-md-6">
-
-        <!--TODO LABEL-->
-        <span>{{donation.name}}</span>
-    </div>
-    <div class="col-md-6 text-right">
-        <!--COMPLETED TODO BUTTON-->
-        <a class="btn btn-primary"
-           ng-click="completeDonation($index, donation)">
-            <i class="glyphicon glyphicon-ok"></i> Complete Donation
-        </a>
-
-        <!--DELETE TODO BUTTON-->
-        <a class="btn btn-danger"
-           ng-click="removeDonation($index, donation)">
-            <i class="glyphicon glyphicon-remove"></i> Remove Donation
-        </a>
-
-    </div>
-
-</div>
-
-<h4 ng-show="(donations | filter:{status: 'complete'}).length">Completed</h4>
-
-<div ng-repeat="donation in donations | filter:{status: 'complete'}"
-     class="row list-item bg-success">
-
-    <div class="col-md-6">
-
-        <!--TODO LABEL-->
-        <span>{{donation.name}}</span>
-    </div>
-    <div class="col-md-6 text-right">
-
-        <!--DELETE TODO BUTTON-->
-        <a class="btn btn-danger"
-           ng-click="removeDonation($index, donation)">
-            <i class="glyphicon glyphicon-remove"></i> Remove
-        </a>
-
-    </div>
-
-</div>
 
 <!-- <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="app.js"></script>
 </div> -->
-<!-- <div class = "row">
+<div class = "row">
 	<div class="col-xs-6 col-xs-offset-3">
 		<div class="input-group">
 		<span class="input-group-btn">
@@ -120,7 +14,7 @@
 	</div>
 </div>
 <h3>Donations to be delivered</h3>
-<div ng-repeat="item in items | filter: {isCompleted:false} | 			filter: searchText">
+<div ng-repeat="item in items | filter: {isCompleted:false} | filter: searchText">
 	<div class ="panel panel-default">
 		<div class="panel-body">
 			<div class="col-xs-1"><input type="checkbox" ng-model="donation.isCompleted" ng-change="inputChange(item)"></div>
@@ -141,4 +35,4 @@
 	        <div class="col-xs-1"><button class="btn btn-danger fa fa-trash-o" ng-click="deleteItem(item.id)"></button></div>
 	    </div>
 	</div>
-</div> -->
+</div>

@@ -1,4 +1,6 @@
 "use strict";
+console.log("loaded UserFactory");
+
 app.factory("UserFactory", function($q, $http, FIREBASE_CONFIG){
 
 	let addUser = (authData) => {
@@ -22,6 +24,7 @@ app.factory("UserFactory", function($q, $http, FIREBASE_CONFIG){
 		return $q((resolve, reject) => {
 			$http.get(`${FIREBASE_CONFIG.databaseURL}/users.json?orderBy="uid"&equalTo="${userId}"`)
 			.success(function(userObject){
+				console.log("userObject from Factory", userObject);
 				let users = [];
 				Object.keys(userObject).forEach(function(key){
 					users.push(userObject[key]);
