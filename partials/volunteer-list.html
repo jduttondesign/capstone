@@ -1,9 +1,6 @@
-<h2>Hello</h2>
+<h2>Donation List</h2>
 
-
-<!-- <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="app.js"></script>
-</div> -->
+<!-- This is the search bar -->
 <div class = "row">
 	<div class="col-xs-6 col-xs-offset-3">
 		<div class="input-group">
@@ -13,7 +10,31 @@
 		</div>
 	</div>
 </div>
-<h3>Donations to be delivered</h3>
+<!--This shows the list of donations from the seeder file-->
+<h3>In Progress</h3>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-7">Pick-up Date</div>
+        <div class="col-xs-2">Pick-up Address</div>            
+        <div class="col-xs-1"></div>
+    </div>
+</div>
+
+<div ng-repeat="thingy in items | filter: searchText">
+    <div class="panel panel-default" ng-hide="thingy.isCompleted">
+        <div class="panel-body">
+            <div class="col-xs-1"><input type="checkbox" ng-model="thingy.isCompleted" ng-change="inputChange(thingy)"/></div>
+            <div class="col-xs-7"><a ng-href="#/items/{{thingy.id}}">{{thingy.task}}</a></div>
+            <div class="col-xs-2">{{thingy.dueDate}}</div>
+            <div class="col-xs-1">{{thingy.assignedTo}}</div>            
+            <div class="col-xs-1"><button class="btn btn-danger" ng-click="itemDelete(thingy.id)"><i class="fa fa-trash" aria-hidden="true"></i></button></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <h3>Donations to be delivered</h3>
 <div ng-repeat="item in items | filter: {isCompleted:false} | filter: searchText">
 	<div class ="panel panel-default">
 		<div class="panel-body">
@@ -23,9 +44,9 @@
             <div class="col-xs-1"><button class="btn btn-danger fa fa-trash-o" ng-click="deleteItem(item.id)"></button></div>
         </div>
     </div>
-</div>
+</div> -->
 
-<h3>Completed</h3>
+<!-- <h3>Completed</h3>
 <div ng-repeat="item in items | filter: {isCompleted:true}">
 	<div class="panel panel-default">
 	    <div class="panel-body">
@@ -36,3 +57,4 @@
 	    </div>
 	</div>
 </div>
+ -->

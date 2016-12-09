@@ -1,18 +1,20 @@
 {
   "donations": {
     "donation0": {
-      "task": "pick up donation at Panera",
+      "task": "pick up french bread at Panera",
       "isCompleted": true,
       "assignedTo": "uid",
       "uid": "2A2aWXVabESiowb00JJeZ2HwEfp2",
-      "address": ""
+      "address": "1799 Gallatin Pike Madison TN 37115",
+      "pickupDate": "12/10/16"
     },
     "donation1": {
-      "task": "pick up donation at Happy Asian Bistro",
+      "task": "pick up egg rolls at Happy Asian Bistro",
       "isCompleted": false,
       "assignedTo": "uid",
       "uid": "",
-      "address": ""
+      "address": "919 Conference Drive Goodlettsville TN 37072",
+      "pickupDate": "12/16/16"
     },
     "donation2": {
       "task": "pick up donation at X restaurant",

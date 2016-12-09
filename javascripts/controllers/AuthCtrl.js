@@ -7,7 +7,7 @@ app.controller("AuthCtrl", function($scope, $rootScope, $location, AuthFactory, 
 	$scope.login = {
 		email: "a@a.com",
 		password: "123456"
-	}
+	};
 
 	if($location.path() === "/logout"){
 		AuthFactory.logout();

@@ -11,11 +11,20 @@
       <a class="navbar-brand" href="#">Todo App</a>
     </div>
 
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-show="!isActive"><a ng-href="#/login">Login</a></li>
+        <li ng-show="isActive"><a ng-href="#/items/new">New Item</a></li>
+        <li ng-show="isActive"><a ng-href="#/items/list">All Items</a></li>
+        <li ng-show="isActive"><a ng-href="#/logout">Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right" ng-repeat="thingy in navItems" ng-show="user">
         <li><a href="{{thingy.url}}">{{thingy.name}}</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+  </div><!-- /.container-fluid --> -->
 </nav>
