@@ -10,14 +10,14 @@
 		</div>
 	</div>
 </div>
-<!--This shows the list of donations from the seeder file-->
-<h3>In Progress</h3>
+<!--This shows the list of donations from the firebase file-->
+<h3>Donations to be Picked up</h3>
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="col-xs-1"></div>
-        <div class="col-xs-7">Pick-up Date</div>
-        <div class="col-xs-2">Pick-up Address</div>            
-        <div class="col-xs-1"></div>
+        <div class="col-xs-7">Pick-up Address</div>
+        <div class="col-xs-2">Pick-up Date</div>          
+        <div class="col-xs-1">Add a donation</div>
     </div>
 </div>
 
@@ -28,11 +28,17 @@
             <div class="col-xs-7"><a ng-href="#/items/{{thingy.id}}">{{thingy.task}}</a></div>
             <div class="col-xs-2">{{thingy.dueDate}}</div>
             <div class="col-xs-1">{{thingy.assignedTo}}</div>            
-            <div class="col-xs-1"><button class="btn btn-danger" ng-click="itemDelete(thingy.id)"><i class="fa fa-trash" aria-hidden="true"></i></button></div>
+            <!-- <div class="col-xs-1"><button class="btn btn-danger" ng-click="itemDelete(thingy.id)"><i class="fa fa-add" aria-hidden="true"></i> </button>--></div>
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body ng-app="">
 
+<div ng-init="myVar = '//http://127.0.0.1:8080/#/new'">
+<h3>Post a Donation Pick up</h3>
+<p>Go to <a ng-href="{{myVar}}">{{myVar}}</a> to participate!</p>
+</div>
 
 <!-- <h3>Donations to be delivered</h3>
 <div ng-repeat="item in items | filter: {isCompleted:false} | filter: searchText">

@@ -5,7 +5,7 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
 
   var getItemList = function(userId){
     return $q((resolve, reject) => {
-      $http.get(`${FIREBASE_CONFIG.databaseURL}/items.json?orderBy="uid"&equalTo="${userId}"`)
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/donations.json`)
         .success(function(response){
             let items = [];
             Object.keys(response).forEach(function(key){
@@ -22,7 +22,7 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
   
   var postNewItem = function(newItem){
     return $q((resolve, reject) =>{
-      $http.post(`${FIREBASE_CONFIG.databaseURL}/items.json`,
+      $http.post(`${FIREBASE_CONFIG.databaseURL}/donations.json`,
          JSON.stringify({
             assignedTo: newItem.assignedTo,
             isCompleted: newItem.isCompleted,
@@ -41,7 +41,7 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
 
   var deleteItem = function(itemId){
     return $q((resolve, reject) => {
-      $http.delete(`${FIREBASE_CONFIG.databaseURL}/items/${itemId}.json`)
+      $http.delete(`${FIREBASE_CONFIG.databaseURL}/donations/${itemId}.json`)
       .success(function(deleteResponse){
         resolve(deleteResponse);
       })
@@ -53,7 +53,7 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
 
   var getSingleItem = function(itemId){
     return $q((resolve, reject) => {
-      $http.get(`${FIREBASE_CONFIG.databaseURL}/items/${itemId}.json`)
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/donations/${itemId}.json`)
       .success(function(getSingleResponse){
         resolve(getSingleResponse);
       })
@@ -65,7 +65,7 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
 
   var editItem = function(editItem){
     return $q((resolve, reject) =>{
-      $http.put(`${FIREBASE_CONFIG.databaseURL}/items/${editItem.id}.json`,
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/donations/${editItem.id}.json`,
          JSON.stringify({
             assignedTo: editItem.assignedTo,
             isCompleted: editItem.isCompleted,
