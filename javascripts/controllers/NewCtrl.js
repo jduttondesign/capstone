@@ -8,7 +8,7 @@ app.controller("NewCtrl", function($scope, $rootScope, $location, DonationFactor
 	  $scope.newTask.isCompleted = false;
 	  $scope.newTask.uid = $rootScope.user.uid;
 	  DonationFactory.postNewItem($scope.newTask).then(function(itemId){
-	    $location.url("/items/list");
+	    $location.url("/donations/list");
 	    $scope.newTask = {};
 	  });
   	};

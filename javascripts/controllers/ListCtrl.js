@@ -3,12 +3,7 @@ console.log("loaded ListCtrl");
 
 app.controller("ListCtrl", function($scope, $rootScope, DonationFactory){
   $scope.items = [];
-
-
-// itemStorage.getItemList().then(function(itemCollection){
-//         console.log("itemCollection from promise", itemCollection);
-//         $scope.items = itemCollection;
-//     });
+//console.log(scope);
 
   let getItems = function(){ 
     DonationFactory.getItemList($rootScope.user.uid).then(function(fbItems){
