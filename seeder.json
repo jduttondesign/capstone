@@ -17,11 +17,12 @@
       "pickupDate": "12/16/16"
     },
     "donation2": {
-      "task": "pick up donation at X restaurant",
+      "task": "pick up cookies at 4girls Bakery",
       "isCompleted": false,
       "assignedTo": "uid",
       "uid": "",
-      "address": ""
+      "address": "100 Main Street Goodlettsville TN 37072",
+      "pickupDate": "12/16/16"
     }
   }
 }

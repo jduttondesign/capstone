@@ -1,6 +1,4 @@
-
 "use strict";
-console.log("loaded EditCtrl");
 
 app.controller("EditCtrl", function($scope, $location, $routeParams, DonationFactory){
 	$scope.newTask = {};
@@ -14,7 +12,7 @@ app.controller("EditCtrl", function($scope, $location, $routeParams, DonationFac
 	$scope.addNewItem = function(){
 		DonationFactory.editItem($scope.newTask).then(function(response){
 			$scope.newTask = {};
-			$location.url("/items/list");
+			$location.url("/donation/list");
 		});
 	};
 });

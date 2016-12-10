@@ -1,5 +1,4 @@
 "use strict";
-console.log("loaded NewCtrl");
 
 app.controller("NewCtrl", function($scope, $rootScope, $location, DonationFactory){
   	$scope.newTask = {};

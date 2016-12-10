@@ -1,5 +1,4 @@
 "use strict";
-console.log("loaded ListCtrl");
 
 app.controller("ListCtrl", function($scope, $rootScope, DonationFactory){
   $scope.items = [];
@@ -24,5 +23,15 @@ app.controller("ListCtrl", function($scope, $rootScope, DonationFactory){
       getItems();
     });
   };
+
+ // $scope.clicked = function(){
+ //       window.location = "/new";
+
+ // }
+
+$scope.clicked = function(){   
+
+        $location.path('#/new');
+}
 
 });

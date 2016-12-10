@@ -1,5 +1,4 @@
 "use strict";
-console.log("loaded DonationFactory");
 
 app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
 
