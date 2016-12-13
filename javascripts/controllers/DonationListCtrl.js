@@ -3,22 +3,24 @@
 app.controller("DonationListCtrl", function($scope, $rootScope, DonationFactory){
   $scope.donations = [];
 
-  let getDonations = function(){ 
-    DonationFactory.getDonationList($rootScope.user.uid).then(function(fbDonations){
+  let getDonations = function(){  
+    DonationFactory.getDonationList($rootScope.user).then(function(fbDonations){
       $scope.donations = fbDonations;
+
     });
   };
 
   getDonations();
+//console.log("test");
 
-  $scope.deleteDonation = function(itemId){
-    DonationFactory.deleteDonation(itemId).then(function(response){
+  $scope.deleteDonation = function(donationId){
+    DonationFactory.deleteDonation(donationId).then(function(response){
       getDonations();
     });
   };
 
   $scope.inputChange = function(thingy){
-    DonationFactory.editItem(thingy).then(function(response){
+    DonationFactory.editDonation(thingy).then(function(response){
       getDonations();
     });
   };

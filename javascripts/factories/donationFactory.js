@@ -50,9 +50,9 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
 
-  var getSingleItem = function(itemId){
+  var getSingleItem = function(donationId){
     return $q((resolve, reject) => {
-      $http.get(`${FIREBASE_CONFIG.databaseURL}/donations/${itemId}.json`)
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/donations/${donationId}.json`)
       .success(function(getSingleResponse){
         resolve(getSingleResponse);
       })
