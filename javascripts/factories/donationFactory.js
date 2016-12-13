@@ -38,9 +38,9 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
 
-  var deleteItem = function(itemId){
+  var deleteDonation = function(itemId){
     return $q((resolve, reject) => {
-      $http.delete(`${FIREBASE_CONFIG.databaseURL}/donations/${itemId}.json`)
+      $http.delete(`${FIREBASE_CONFIG.databaseURL}/donations/${donationId}.json`)
       .success(function(deleteResponse){
         resolve(deleteResponse);
       })
