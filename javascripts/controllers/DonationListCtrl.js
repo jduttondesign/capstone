@@ -11,9 +11,9 @@ app.controller("DonationListCtrl", function($scope, $rootScope, DonationFactory)
 
   getDonations();
 
-  $scope.deleteItem = function(itemId){
-    DonationFactory.deleteItem(itemId).then(function(response){
-      getItems();
+  $scope.deleteDonation = function(itemId){
+    DonationFactory.deleteDonation(itemId).then(function(response){
+      getDonations();
     });
   };
 
