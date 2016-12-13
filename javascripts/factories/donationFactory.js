@@ -19,14 +19,14 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
   
-  var postNewItem = function(newItem){
+  var postNewDonation = function(newDonation){
     return $q((resolve, reject) =>{
       $http.post(`${FIREBASE_CONFIG.databaseURL}/donations.json`,
          JSON.stringify({
-            assignedTo: newItem.assignedTo,
-            isCompleted: newItem.isCompleted,
-            task: newItem.task,
-            uid: newItem.uid
+            assignedTo: newDonation.assignedTo,
+            isCompleted: newDonation.isCompleted,
+            task: newDonation.task,
+            uid: newDonation.uid
          })
        )
         .success(function(postResponse){
@@ -83,7 +83,7 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
 
   return {
     getDonationList:getDonationList, 
-    postNewItem:postNewItem, 
+    postNewDonation:postNewDonation, 
     deleteDonation:deleteDonation, 
     getSingleItem:getSingleItem, 
     editItem:editItem
