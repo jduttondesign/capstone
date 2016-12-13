@@ -62,14 +62,14 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
 
-  var editItem = function(editItem){
+  var editItem = function(editDonation){
     return $q((resolve, reject) =>{
-      $http.put(`${FIREBASE_CONFIG.databaseURL}/donations/${editItem.id}.json`,
-         JSON.stringify({
-            assignedTo: editItem.assignedTo,
-            isCompleted: editItem.isCompleted,
-            task: editItem.task,
-            uid: editItem.uid
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/items/${editItem.id}.json`,
+         JSON.stringify({ 
+            assignedTo: editDonation.assignedTo,
+            isCompleted: editDonation.isCompleted,
+            task: editDonation.task,
+            uid: editDonation.uid
          })
        )
         .success(function(editResponse){

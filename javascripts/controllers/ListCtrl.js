@@ -2,7 +2,7 @@
 
 app.controller("ListCtrl", function($scope, $rootScope, DonationFactory){
   $scope.items = [];
-//console.log(scope);
+
 
   let getItems = function(){ 
     DonationFactory.getItemList($rootScope.user.uid).then(function(fbItems){
@@ -24,14 +24,11 @@ app.controller("ListCtrl", function($scope, $rootScope, DonationFactory){
     });
   };
 
- // $scope.clicked = function(){
- //       window.location = "/new";
-
- // }
+ 
 
 $scope.clicked = function(){   
 
         $location.path('#/new');
-}
+};
 
 });

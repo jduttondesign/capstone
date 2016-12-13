@@ -12,7 +12,7 @@ app.controller("EditCtrl", function($scope, $location, $routeParams, DonationFac
 	$scope.addNewItem = function(){
 		DonationFactory.editItem($scope.newTask).then(function(response){
 			$scope.newTask = {};
-			$location.url("/donation/list");
+			$location.url("/donations/list");			
 		});
 	};
 });

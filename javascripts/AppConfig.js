@@ -36,29 +36,29 @@ app.config(function($routeProvider){
 			controller:'AuthCtrl'
 		})
 		.when('/donations/list', {
-			templateUrl: 'partials/volunteer-list.html',
-			controller: 'ListCtrl'
-			//resolve: {isAuth}
+			templateUrl:'partials/volunteer-list.html',
+			controller: 'ListCtrl',
+			resolve: {isAuth}
 		})
 		.when('/new', {
-			templateUrl: 'partials/donation-new.html',
-			controller: 'NewCtrl'
-			 //resolve: {isAuth}
+			templateUrl:'partials/donation-new.html',
+			controller: 'NewCtrl',
+			 resolve: {isAuth}
 		})
 		.when('/view/:id', {
 			templateUrl: 'partials/donation-view.html',
-			controller: 'DonationCtrl'
-			// resolve: {isAuth}
+			controller: 'DonationCtrl',
+			 resolve: {isAuth}
 		})
-		.when('/edit/:id', {
+		.when('/donations/edit/:id', {
 			templateUrl: 'partials/donation-edit.html',
-			controller:'EditCtrl'
-			// resolve: {isAuth}
+			controller:'EditCtrl',
+			resolve: {isAuth}
 		})
 		.when('/logout', {
 			templateUrl: 'partials/auth.html',
-			controller: 'AuthCtrl'
-			// resolve: {isAuth}
+			controller: 'AuthCtrl',
+			resolve: {isAuth}
 		})
 		.otherwise('/auth');
 });
