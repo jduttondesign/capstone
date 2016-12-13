@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("EditCtrl", function($scope, $location, $routeParams, DonationFactory){
+app.controller("DonationEditCtrl", function($scope, $location, $routeParams, DonationFactory){
 	$scope.newTask = {};
 	let itemId = $routeParams.id;
 
@@ -12,7 +12,7 @@ app.controller("EditCtrl", function($scope, $location, $routeParams, DonationFac
 	$scope.addNewItem = function(){
 		DonationFactory.editItem($scope.newTask).then(function(response){
 			$scope.newTask = {};
-			$location.url("/donations/list");			
+			$location.url("/donation/list");			
 		});
 	};
 });

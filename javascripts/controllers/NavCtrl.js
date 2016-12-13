@@ -8,11 +8,11 @@ app.controller("NavCtrl", function($scope){
   	}, 
   	{
   		name:"All Items",
-  		url:"#/donations/list"
+  		url:"#/donation/list"
   	}, 
   	{
   		name:"New Item",
-		url:"#/donations/new"
+		url:"#/donation/new"
 	}
   ];
 });

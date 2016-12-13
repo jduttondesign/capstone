@@ -1,6 +1,7 @@
 "use strict";
 
-app.controller("DonationCtrl", function($scope, $routeParams, DonationFactory){
+app.controller("DonationViewCtrl", function($scope, $routeParams, DonationFactory){
+	console.log("hello");
 	$scope.selectedItem = {};
 	let itemId = $routeParams.id;
 
@@ -13,7 +14,7 @@ app.controller("DonationCtrl", function($scope, $routeParams, DonationFactory){
 // 'use strict';
 //  console.log("loaded DonationCtrl");
 
-// angular.module('DonationApp.addPost', ['ngRoute'])
+// app.module('DonationApp.addPost', ['ngRoute'])
 //     .config(['$routeProvider', function($routeProvider) {
 //         $routeProvider.when('/partials', {
 //             templateUrl: 'partials/volunteer-list.html',

@@ -21,14 +21,14 @@
     </div>
 </div>
 
-<div ng-repeat="thingy in items | filter: searchText">
+<div ng-repeat="thingy in donations | filter: searchText">
     <div class="panel panel-default" ng-hide="thingy.isCompleted">
         <div class="panel-body">
             <div class="col-xs-1"><input type="checkbox" ng-model="thingy.isCompleted" ng-change="inputChange(thingy)"/></div>
-            <div class="col-xs-7"><a ng-href="#/view/{{thingy.id}}">{{thingy.task}}</a></div>
+            <div class="col-xs-7"><a ng-href="#/donation/view/{{thingy.id}}">{{thingy.task}}</a></div>
             <div class="col-xs-2">{{thingy.dueDate}}</div>
             <div class="col-xs-1">{{thingy.assignedTo}}</div>            
-            <!-- <div class="col-xs-1"><button class="btn btn-danger" ng-click="itemDelete(thingy.id)">--><i class="fa fa-add" aria-hidden="true"></i> </button></div>
+            <div class="col-xs-1"><button class="btn btn-danger" ng-click="deleteItem(thingy.id)"><i class="fa fa-add" aria-hidden="true"></i> </button></div>
         </div>
     </div>
 </div>
@@ -36,28 +36,15 @@
 <body ng-app="">
 
 <h3>Post a Donation for Pick-up</h3>
-<button><a ng-href="#/new">Click</a></button>
-
-
-<!--  <h3>Donations to be delivered test</h3>
-<div ng-repeat="item in items | filter: {isCompleted:false} | filter: searchText">
-	<div class ="panel panel-default">
-		<div class="panel-body">
-			<div class="col-xs-1"><input type="checkbox" ng-model="donation.isCompleted" ng-change="inputChange(item)"></div>
-			<div class="col-xs-9"><a href="#/items/view/{{item.id}}">{{item.task}}</a></div>
-            <div class="col-xs-1">{{item.assignedTo}}</div>
-            <div class="col-xs-1"><button class="btn btn-danger fa fa-trash-o" ng-click="deleteItem(item.id)"></button></div>
-        </div>
-    </div>
-</div>  -->
+<button><a ng-href="#/donation/new">Click</a></button>
 
  <h3>Completed Drop-offs</h3>
-<div ng-repeat="donation in items | filter: {isCompleted:true}">
+<div ng-repeat="donation in donations | filter: {isCompleted:true}">
 
 	<div class="panel panel-default">
 	    <div class="panel-body">
 	        <div class="col-xs-1"><input type="checkbox" name="" ng-model="donation.isCompleted" ng-change="inputChange(donation)"></div>
-	        <div class="col-xs-9"><a href="#/donations/view/{{donation.id}}">{{donation.task}}</a></div>
+	        <div class="col-xs-9"><a href="#/donation/view/{{donation.id}}">{{donation.task}}</a></div>
 	        <div class="col-xs-1">{{donation.assignedTo}}</div>
 	        <div class="col-xs-1"><button class="btn btn-danger fa fa-trash-o" ng-click="deleteItem(donation.id)"></button></div>
 	    </div>

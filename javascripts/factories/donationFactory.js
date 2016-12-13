@@ -2,16 +2,16 @@
 
 app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
 
-  var getItemList = function(userId){
+  var getDonationList = function(userId){
     return $q((resolve, reject) => {
       $http.get(`${FIREBASE_CONFIG.databaseURL}/donations.json`)
         .success(function(response){
-            let items = [];
+            let donations = [];
             Object.keys(response).forEach(function(key){
               response[key].id = key;
-              items.push(response[key]);
+              donations.push(response[key]);
             });
-          resolve(items);
+          resolve(donations);
         })
         .error(function(errorResponse){
           reject(errorResponse);
@@ -64,7 +64,7 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
 
   var editItem = function(editDonation){
     return $q((resolve, reject) =>{
-      $http.put(`${FIREBASE_CONFIG.databaseURL}/items/${editItem.id}.json`,
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/donations/${editDonation.id}.json`,
          JSON.stringify({ 
             assignedTo: editDonation.assignedTo,
             isCompleted: editDonation.isCompleted,
@@ -82,7 +82,7 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
   };
 
   return {
-    getItemList:getItemList, 
+    getDonationList:getDonationList, 
     postNewItem:postNewItem, 
     deleteItem:deleteItem, 
     getSingleItem:getSingleItem, 
