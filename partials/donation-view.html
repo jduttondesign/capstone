@@ -4,3 +4,15 @@
 <h2>Assigned To: {{selectedItem.assignedTo}}</h2>
 <h2>Completed?: {{selectedItem.isCompleted}}</h2>
 
+
+ <h3>Completed Drop-offs</h3>
+<div ng-repeat="donation in donations | filter: {isCompleted:true}">
+
+	<div class="panel panel-default">
+	    <div class="panel-body">
+	        <div class="col-xs-1"><input type="checkbox" name="" ng-model="donation.isCompleted" ng-change="inputChange(donation)"></div>
+	        <div class="col-xs-9"><a href="#/donation/view/{{donation.id}}">{{donation.task}}</a></div>
+	        <div class="col-xs-1">{{donation.assignedTo}}</div>
+	        <div class="col-xs-1"><button class="btn btn-danger fa fa-trash-o" ng-click="deleteDonation(donation.id)"></button></div>
+	    </div>
+	</div>

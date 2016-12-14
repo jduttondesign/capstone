@@ -55,6 +55,11 @@ app.config(function($routeProvider){
 			controller:'DonationEditCtrl',
 			resolve: {isAuth}
 		})
+		.when('/donation/mydonations/:id', {
+			templateUrl: 'partials/mydonations.html',
+			controller:'MyDonationsCtrl',
+			resolve: {isAuth}
+		})
 		.when('/logout', {
 			templateUrl: 'partials/auth.html',
 			controller: 'AuthCtrl',

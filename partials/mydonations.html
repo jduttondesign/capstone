@@ -1,5 +1,4 @@
-<h2>Donation List</h2>
-
+<h2>My Donations </h2>
 <!-- This is the search bar -->
 <div class = "row">
 	<div class="col-xs-6 col-xs-offset-3">
@@ -11,7 +10,7 @@
 	</div>
 </div>
 
-<h3>Add a donation to the list below</h3>
+<h3>Post a Donation for Pick-up</h3>
 <button><a ng-href="#/donation/new">Click</a></button>
 
 <!--This shows the list of donations from the firebase file-->
@@ -24,6 +23,7 @@
         <div class="col-xs-1"></div>
     </div>
 </div>
+
 <div ng-repeat="thingy in donations | filter: searchText">
     <div class="panel panel-default" ng-hide="thingy.isCompleted">
         <div class="panel-body">
@@ -35,4 +35,28 @@
         </div>
     </div>
 </div>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body ng-app=""> -->
+<h3>I will pick up</h3>
+<div class="panel panel-default">
+	    <div class="panel-body">
+	        <div class="col-xs-1"><input type="checkbox" name="" ng-model="donation.isCompleted" ng-change="inputChange(donation)"></div>
+	        <div class="col-xs-9"><a href="#/donation/view/{{donation.id}}">{{donation.task}}</a></div>
+	        <div class="col-xs-1">{{donation.assignedTo}}</div>
+	        <div class="col-xs-1"><button class="btn btn-danger fa fa-trash-o" ng-click="deleteDonation(donation.id)"></button></div>
+	    </div>
+	</div>
+
+
+ <h3>Delivered Donations</h3>
+<div ng-repeat="donation in donations | filter: {isCompleted:true}">
+
+	<div class="panel panel-default">
+	    <div class="panel-body">
+	        <div class="col-xs-1"><input type="checkbox" name="" ng-model="donation.isCompleted" ng-change="inputChange(donation)"></div>
+	        <div class="col-xs-9"><a href="#/donation/view/{{donation.id}}">{{donation.task}}</a></div>
+	        <div class="col-xs-1">{{donation.assignedTo}}</div>
+	        <div class="col-xs-1"><button class="btn btn-danger fa fa-trash-o" ng-click="deleteDonation(donation.id)"></button></div>
+	    </div>
+	</div>
 </div>
