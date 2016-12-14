@@ -70,6 +70,7 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
             isCompleted: editDonation.isCompleted,
             task: editDonation.task,
             uid: editDonation.uid
+            
          })
        )
         .success(function(editResponse){

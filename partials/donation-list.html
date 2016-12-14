@@ -10,6 +10,10 @@
 		</div>
 	</div>
 </div>
+
+<h3>Post a Donation for Pick-up</h3>
+<button><a ng-href="#/donation/new">Click</a></button>
+
 <!--This shows the list of donations from the firebase file-->
 <h3>Donations to be Picked up</h3>
 <div class="panel panel-default">
@@ -35,8 +39,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <body ng-app="">
 
-<h3>Post a Donation for Pick-up</h3>
-<button><a ng-href="#/donation/new">Click</a></button>
+
 
  <h3>Completed Drop-offs</h3>
 <div ng-repeat="donation in donations | filter: {isCompleted:true}">

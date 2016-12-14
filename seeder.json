@@ -2,24 +2,46 @@
   "donations": {
     "donation0": {
       "task": "pick up french bread at Panera",
-      "isCompleted": true,
-      "assignedTo": "uid",
+      "isAgreePickup": false,
+      "pickupId": "uid",
+      "isDelivered": false,
       "uid": "2A2aWXVabESiowb00JJeZ2HwEfp2",
       "address": "1799 Gallatin Pike Madison TN 37115",
       "pickupDate": "12/10/16"
     },
     "donation1": {
       "task": "pick up egg rolls at Happy Asian Bistro",
-      "isCompleted": false,
-      "assignedTo": "uid",
+      "isAgreePickup": false,
+      "pickupId": "uid",
+      "isDelivered": false,
       "uid": "",
       "address": "919 Conference Drive Goodlettsville TN 37072",
       "pickupDate": "12/16/16"
     },
     "donation2": {
       "task": "pick up cookies at 4girls Bakery",
-      "isCompleted": false,
-      "assignedTo": "uid",
+      "isAgreePickup": false,
+      "pickupId": "uid",
+      "isDelivered": false,
+      "isDelivered": false,
+      "uid": "",
+      "address": "100 Main Street Goodlettsville TN 37072",
+      "pickupDate": "12/16/16"
+    },
+    "donation3": {
+      "task": "pick up cookies at 4girls Bakery",
+      "isAgreePickup": false,
+      "pickupId": "uid",
+      "isDelivered": false,
+      "uid": "",
+      "address": "100 Main Street Goodlettsville TN 37072",
+      "pickupDate": "12/16/16"
+  },
+  "donation4": {
+      "task": "pick up cookies at 4girls Bakery",
+      "isAgreePickup": false,
+      "pickupId": "uid",
+      "isDelivered": false,
       "uid": "",
       "address": "100 Main Street Goodlettsville TN 37072",
       "pickupDate": "12/16/16"

@@ -5,6 +5,8 @@ app.controller("DonationNewCtrl", function($scope, $rootScope, $location, Donati
 	$scope.addNewDonation = function(){
 	  $scope.newTask.isCompleted = false;
 	  $scope.newTask.uid = $rootScope.user;
+	  
+	  
 	  DonationFactory.postNewDonation($scope.newTask).then(function(itemId){
 	    $location.url("/donation/list");
 	    $scope.newTask = {};
