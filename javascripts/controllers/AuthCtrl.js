@@ -1,5 +1,4 @@
 "use strict";
-
 app.controller("AuthCtrl", function($scope, $rootScope, $location, AuthFactory, UserFactory){
 	$scope.loginContainer = true;
 	$scope.registerContainer = false;
@@ -16,11 +15,9 @@ app.controller("AuthCtrl", function($scope, $rootScope, $location, AuthFactory, 
 
 	let logMeIn = function(loginStuff){
 		AuthFactory.authenticate(loginStuff).then(function(didLogin){
-			console.log("didLogin", didLogin);
 			return UserFactory.getUser(didLogin.uid);
 		})
 		 .then(function(userCreds){
-		 	console.log("userCreds", userCreds);
 		 	$rootScope.user = userCreds;
 		 	$scope.login = {};
 		 	$scope.register = {};
@@ -39,7 +36,6 @@ app.controller("AuthCtrl", function($scope, $rootScope, $location, AuthFactory, 
 	};
 
 	$scope.registerUser = function(registerNewUser){
-		console.log("registerNewUser", registerNewUser);
 		AuthFactory.registerWithEmail(registerNewUser).then(function(didRegister){
 			registerNewUser.uid = didRegister.uid;
 			return UserFactory.addUser(registerNewUser);
@@ -49,7 +45,6 @@ app.controller("AuthCtrl", function($scope, $rootScope, $location, AuthFactory, 
 	};
 
 	$scope.loginUser = function(loginNewUser){
-		console.log("loginUser", loginNewUser);
 		logMeIn(loginNewUser);
 	};
 });
