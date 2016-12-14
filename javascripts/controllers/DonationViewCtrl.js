@@ -1,12 +1,12 @@
 "use strict";
 
 app.controller("DonationViewCtrl", function($scope, $routeParams, DonationFactory){
-	$scope.selectedItem = {};
-	let itemId = $routeParams.id;
+	$scope.selectedDonation = {};
+	let donationId = $routeParams.id;
 
-	DonationFactory.getSingleItem(itemId).then(function(oneItem){
-		oneItem.id=itemId;
-		$scope.selectedItem = oneItem;
+	DonationFactory.getSingleDonation(donationId).then(function(oneDonation){
+		oneDonation.id=donationId;
+		$scope.selectedDonation = oneDonation;
 	});
 });
 

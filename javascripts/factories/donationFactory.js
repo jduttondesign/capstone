@@ -38,9 +38,9 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
 
-  var deleteDonation = function(itemId){
+  var deleteDonation = function(donationId){
     return $q((resolve, reject) => {
-      $http.delete(`${FIREBASE_CONFIG.databaseURL}/donations/${itemId}.json`)
+      $http.delete(`${FIREBASE_CONFIG.databaseURL}/donations/${donationId}.json`)
       .success(function(deleteResponse){
         resolve(deleteResponse);
       })
@@ -50,7 +50,7 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
 
-  var getSingleItem = function(donationId){
+  var getSingleDonation = function(donationId){
     return $q((resolve, reject) => {
       $http.get(`${FIREBASE_CONFIG.databaseURL}/donations/${donationId}.json`)
       .success(function(getSingleResponse){
@@ -62,7 +62,7 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
 
-  var editItem = function(editDonation){
+  var editDonation = function(editDonation){
     return $q((resolve, reject) =>{
       $http.put(`${FIREBASE_CONFIG.databaseURL}/donations/${editDonation.id}.json`,
          JSON.stringify({ 
@@ -85,7 +85,7 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     getDonationList:getDonationList, 
     postNewDonation:postNewDonation, 
     deleteDonation:deleteDonation, 
-    getSingleItem:getSingleItem, 
-    editItem:editItem
+    getSingleDonation:getSingleDonation, 
+    editDonation:editDonation
   };
 });
