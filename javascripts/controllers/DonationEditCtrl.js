@@ -2,18 +2,17 @@
 
 app.controller("DonationEditCtrl", function($scope, $location, $routeParams, DonationFactory){
 	$scope.newTask = {};
-	let itemId = $routeParams.id;
+	let donationId = $routeParams.id;
 
-	DonationFactory.getSingleDonation(itemId).then(function(oneItem){
-		oneItem.id = itemId;
-		$scope.newTask = oneItem;
+	DonationFactory.getSingleDonation(donationId).then(function(oneDonation){
+		oneDonation.id = donationId;
+		$scope.newTask = oneDonation;
 	});
 
-	$scope.addNewItem = function(){
+	$scope.addNewDonation = function(){
 		DonationFactory.editDonation($scope.newTask).then(function(response){
 			$scope.newTask = {};
-			$location.url("/donation/list");
-			//console.log("newTask", $scope.newTask);			
+			$location.url("/donation/list");			
 		});
 	};
 });

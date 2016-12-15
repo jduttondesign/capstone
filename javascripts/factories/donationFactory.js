@@ -68,10 +68,17 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     return $q((resolve, reject) =>{
       $http.put(`${FIREBASE_CONFIG.databaseURL}/donations/${editDonation.id}.json`,
          JSON.stringify({ 
-            assignedTo: editDonation.assignedTo,
-            isCompleted: editDonation.isCompleted,
-            task: editDonation.task,
-            uid: editDonation.uid
+            //assignedTo: editDonation.assignedTo,
+            //isCompleted: editDonation.isCompleted,
+            //task: editDonation.task,
+             //uid: editDonation.uid
+
+
+             isAgreePickup: editDonation.isAgreePickup,
+             isDelivered: editDonation.isDelivered,
+             pickupDate: editDonation.pickupDate,
+             task: editDonation.task,
+             delivererId: editDonation.delivererId
 
          })
        )
@@ -88,10 +95,16 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     return $q((resolve, reject) =>{
       $http.post(`${FIREBASE_CONFIG.databaseURL}/donations.json`,
          JSON.stringify({
-            assignedTo: newDonation.assignedTo,
-            isCompleted: newDonation.isCompleted,
-            task: newDonation.task,
-            uid: newDonation.uid
+            // assignedTo: myDonations.assignedTo,
+            // isCompleted: myDonations.isCompleted,
+            // task: myDonation.task,
+            // uid: myDonation.uid
+
+            isAgreePickup: editDonation.isAgreePickup,
+             isDelivered: editDonation.isDelivered,
+             pickupDate: editDonation.pickupDate,
+             task: editDonation.task,
+             delivererId: editDonation.delivererId
          })
        )
         .success(function(postResponse){

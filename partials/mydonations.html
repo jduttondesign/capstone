@@ -1,4 +1,4 @@
-<h2>My Donations </h2>
+<h2>My Donations I have Agreed to Pick-up</h2>
 <!-- This is the search bar -->
 <div class = "row">
 	<div class="col-xs-6 col-xs-offset-3">
@@ -11,12 +11,13 @@
 </div>
 
 <!--This shows the list of donations from the firebase file-->
-<h3>Donations to be Picked up</h3>
+<h3>Donations I have Agreed to Pickup</h3>
+<div ng-repeat="isAgreedPickup | filter: {pickupId:true}">
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="col-xs-1"></div>
-        <div class="col-xs-7">Pick-up Address</div>
-        <div class="col-xs-2">Pick-up Date</div>          
+        <div class="col-xs-7">Delivered Address</div>
+        <div class="col-xs-2">Delivered Date</div>          
         <div class="col-xs-1"></div>
     </div>
 </div>
@@ -33,9 +34,11 @@
     </div>
 </div>
 
-<h3>I will pick up</h3>
+<h3>I have delivered</h3>
+ <div ng-repeat="isDelivered | filter: {pickupId:true}">
+ <!--$rootScope.user.uid}"-->
 <div ng-repeat="donation in donations | filter: {isCompleted:true}">
-<!--isAgreedPickup = true and pickupId=$rootScope.user.uid-->
+
 <div class="panel panel-default">
 	    <div class="panel-body">
 	        <div class="col-xs-1"><input type="checkbox" name="" ng-model="donation.isCompleted" ng-change="inputChange(donation)"></div>
