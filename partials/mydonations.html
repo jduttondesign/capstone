@@ -10,9 +10,6 @@
 	</div>
 </div>
 
-<h3>Post a Donation for Pick-up</h3>
-<button><a ng-href="#/donation/new">Click</a></button>
-
 <!--This shows the list of donations from the firebase file-->
 <h3>Donations to be Picked up</h3>
 <div class="panel panel-default">
@@ -29,20 +26,21 @@
         <div class="panel-body">
             <div class="col-xs-1"><input type="checkbox" ng-model="thingy.isCompleted" ng-change="inputChange(thingy)"/></div>
             <div class="col-xs-7"><a ng-href="#/donation/view/{{thingy.id}}">{{thingy.task}}</a></div>
-            <div class="col-xs-2">{{thingy.dueDate}}</div>
-            <div class="col-xs-1">{{thingy.assignedTo}}</div>            
+            <div class="col-xs-2">{{thingy.pickupDate}}</div>
+            <div class="col-xs-1">{{thingy.pickupId}}</div>            
             <div class="col-xs-1"><button class="btn btn-danger" ng-click="deleteDonation(thingy.id)"><i class="fa fa-add" aria-hidden="true"></i> </button></div>
         </div>
     </div>
 </div>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<body ng-app=""> -->
+
 <h3>I will pick up</h3>
+<div ng-repeat="donation in donations | filter: {isCompleted:true}">
+<!--isAgreedPickup = true and pickupId=$rootScope.user.uid-->
 <div class="panel panel-default">
 	    <div class="panel-body">
 	        <div class="col-xs-1"><input type="checkbox" name="" ng-model="donation.isCompleted" ng-change="inputChange(donation)"></div>
 	        <div class="col-xs-9"><a href="#/donation/view/{{donation.id}}">{{donation.task}}</a></div>
-	        <div class="col-xs-1">{{donation.assignedTo}}</div>
+	        <div class="col-xs-1">{{donation.pickupDate}}</div>
 	        <div class="col-xs-1"><button class="btn btn-danger fa fa-trash-o" ng-click="deleteDonation(donation.id)"></button></div>
 	    </div>
 	</div>
@@ -50,7 +48,7 @@
 
  <h3>Delivered Donations</h3>
 <div ng-repeat="donation in donations | filter: {isCompleted:true}">
-
+<!--isDelivered = true and pickupId=$rootScope.user.uid-->
 	<div class="panel panel-default">
 	    <div class="panel-body">
 	        <div class="col-xs-1"><input type="checkbox" name="" ng-model="donation.isCompleted" ng-change="inputChange(donation)"></div>

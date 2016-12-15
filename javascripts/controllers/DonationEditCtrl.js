@@ -4,13 +4,13 @@ app.controller("DonationEditCtrl", function($scope, $location, $routeParams, Don
 	$scope.newTask = {};
 	let itemId = $routeParams.id;
 
-	DonationFactory.getSingleItem(itemId).then(function(oneItem){
+	DonationFactory.getSingleDonation(itemId).then(function(oneItem){
 		oneItem.id = itemId;
 		$scope.newTask = oneItem;
 	});
 
 	$scope.addNewItem = function(){
-		DonationFactory.editItem($scope.newTask).then(function(response){
+		DonationFactory.editDonation($scope.newTask).then(function(response){
 			$scope.newTask = {};
 			$location.url("/donation/list");			
 		});

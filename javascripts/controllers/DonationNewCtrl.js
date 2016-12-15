@@ -3,7 +3,7 @@ app.controller("DonationNewCtrl", function($scope, $rootScope, $location, Donati
   	$scope.newTask = {};
 
 	$scope.addNewDonation = function(){
-	  $scope.newTask.isCompleted = false;
+	  $scope.newTask.pickupDate = "";
 	  $scope.newTask.uid = $rootScope.user;
 	  $scope.newTask.isAgreePickup = false;
 	  $scope.newTask.isDelivered = false;
