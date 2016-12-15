@@ -20,13 +20,15 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
   };
   
   var postNewDonation = function(newDonation){
+    console.log("William's donations",newDonation);
     return $q((resolve, reject) =>{
       $http.post(`${FIREBASE_CONFIG.databaseURL}/donations.json`,
          JSON.stringify({
-            assignedTo: newDonation.assignedTo,
-            isCompleted: newDonation.isCompleted,
+            isAgreePickup: newDonation.isAgreePickup,
+            isDelivered: newDonation.isDelivered,
+            pickupDate: newDonation.pickupDate,
             task: newDonation.task,
-            uid: newDonation.uid
+            delivererId: newDonation.delivererId,
          })
        )
         .success(function(postResponse){

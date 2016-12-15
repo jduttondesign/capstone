@@ -12,7 +12,8 @@ app.controller("DonationEditCtrl", function($scope, $location, $routeParams, Don
 	$scope.addNewItem = function(){
 		DonationFactory.editDonation($scope.newTask).then(function(response){
 			$scope.newTask = {};
-			$location.url("/donation/list");			
+			$location.url("/donation/list");
+			//console.log("newTask", $scope.newTask);			
 		});
 	};
 });

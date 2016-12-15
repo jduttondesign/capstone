@@ -11,6 +11,7 @@ app.controller("MyDonationsCtrl", function($scope, $rootScope, $location, Donati
 	  DonationFactory.postNewDonation($scope.newTask).then(function(itemId){
 	    $location.url("/donation/list");
 	    $scope.newTask = {};
+	    
 	  });
   	};
 });

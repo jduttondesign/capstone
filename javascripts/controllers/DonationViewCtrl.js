@@ -5,9 +5,9 @@ app.controller("DonationViewCtrl", function($scope, $routeParams, DonationFactor
 	let donationId = $routeParams.id;
 
 	DonationFactory.getSingleDonation(donationId).then(function(oneDonation){
-		oneDonation.id=donationId; console.log("test");
+		oneDonation.id=donationId; 
 		$scope.selectedDonation = oneDonation;
-		console.log("selectedDonation", $scope.selectedDonation);
+		//console.log("selectedDonation", $scope.selectedDonation);
 	});
 });
 
