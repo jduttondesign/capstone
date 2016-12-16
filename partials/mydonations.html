@@ -1,4 +1,4 @@
-<h2>My Donations I have Agreed to Pick-up</h2>
+<h2> Agreed to Pick-up page</h2>
 <!-- This is the search bar -->
 <div class = "row">
 	<div class="col-xs-6 col-xs-offset-3">
@@ -10,9 +10,12 @@
 	</div>
 </div>
 
+<h1> {{ thisIsAThingOnScope }} </h1>
+<p> {{ donations.length }} </p>
+
 <!--This shows the list of donations from the firebase file-->
 <h3>Donations I have Agreed to Pickup</h3>
-<div ng-repeat="isAgreedPickup | filter: {pickupId:true}">
+<div ng-repeat="isAgreePickup | filter: {pickupId:true}">
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="col-xs-1"></div>
@@ -26,7 +29,7 @@
     <div class="panel panel-default" ng-hide="thingy.isCompleted">
         <div class="panel-body">
             <div class="col-xs-1"><input type="checkbox" ng-model="thingy.isCompleted" ng-change="inputChange(thingy)"/></div>
-            <div class="col-xs-7"><a ng-href="#/donation/view/{{thingy.id}}">{{thingy.task}}</a></div>
+            <div class="col-xs-7"><a ng-href="#/mydonations/{{thingy.id}}">{{thingy.task}}</a></div>
             <div class="col-xs-2">{{thingy.pickupDate}}</div>
             <div class="col-xs-1">{{thingy.pickupId}}</div>            
             <div class="col-xs-1"><button class="btn btn-danger" ng-click="deleteDonation(thingy.id)"><i class="fa fa-add" aria-hidden="true"></i> </button></div>
@@ -48,16 +51,15 @@
 	    </div>
 	</div>
 
-
- <h3>Delivered Donations</h3>
-<div ng-repeat="donation in donations | filter: {isCompleted:true}">
-<!--isDelivered = true and pickupId=$rootScope.user.uid-->
+ <h3>Completed Drop-offs</h3>
+<div ng-repeat="donation in donations | filter: {isAgreePickup:true}">
 	<div class="panel panel-default">
 	    <div class="panel-body">
 	        <div class="col-xs-1"><input type="checkbox" name="" ng-model="donation.isCompleted" ng-change="inputChange(donation)"></div>
 	        <div class="col-xs-9"><a href="#/donation/view/{{donation.id}}">{{donation.task}}</a></div>
 	        <div class="col-xs-1">{{donation.assignedTo}}</div>
 	        <div class="col-xs-1"><button class="btn btn-danger fa fa-trash-o" ng-click="deleteDonation(donation.id)"></button></div>
+
+	        <div class="col-xs-2"><button class="btn btn-danger" ng-click="deleteDonation(thingy.id)"><i class="fa fa-add" aria-hidden="true"></i> </button>Pick-up</div>
 	    </div>
 	</div>
-</div>

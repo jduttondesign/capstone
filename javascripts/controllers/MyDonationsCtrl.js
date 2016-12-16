@@ -9,9 +9,12 @@ app.controller("MyDonationsCtrl", function($scope, $rootScope, $location, Donati
 	  $scope.newTask.isDelivered = true;
 	  $scope.newTask.pickupId = $rootScope.user.uid;
 	  DonationFactory.postNewDonation($scope.newTask).then(function(itemId){
-	    $location.url("/donation/list");
+	    $location.url("/mydonations");
 	    $scope.newTask = {};
-	    
 	  });
   	};
 });
+
+// In donationListCtrl and DonationViewCtrl = 
+//click function to change isagreepickup=true and 
+//assign $rootScope.user.id to pickupId.  Then call edit in DonationFactory

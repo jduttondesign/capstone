@@ -1,7 +1,6 @@
 "use strict";
 
 app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
-
   var getDonationList = function(userId){
     return $q((resolve, reject) => {
       $http.get(`${FIREBASE_CONFIG.databaseURL}/donations.json`)
@@ -20,7 +19,7 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
   };
   
   var postNewDonation = function(newDonation){
-    console.log("William's donations",newDonation);
+    //console.log("William's donations",newDonation);
     return $q((resolve, reject) =>{
       $http.post(`${FIREBASE_CONFIG.databaseURL}/donations.json`,
          JSON.stringify({
@@ -65,20 +64,21 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
   };
 
   var editDonation = function(editDonation){
+    console.log("editDonation", editDonation);
     return $q((resolve, reject) =>{
+      // https://appname.firebase.com/donations/92309f023jf.json
       $http.put(`${FIREBASE_CONFIG.databaseURL}/donations/${editDonation.id}.json`,
          JSON.stringify({ 
             //assignedTo: editDonation.assignedTo,
             //isCompleted: editDonation.isCompleted,
             //task: editDonation.task,
-             //uid: editDonation.uid
-
+            //uid: editDonation.uid
 
              isAgreePickup: editDonation.isAgreePickup,
              isDelivered: editDonation.isDelivered,
              pickupDate: editDonation.pickupDate,
              task: editDonation.task,
-             delivererId: editDonation.delivererId
+             pickupId: editDonation.pickupId
 
          })
        )
@@ -91,38 +91,39 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
 
-  var myDonations = function(myDonations){
-    return $q((resolve, reject) =>{
-      $http.post(`${FIREBASE_CONFIG.databaseURL}/donations.json`,
-         JSON.stringify({
-            // assignedTo: myDonations.assignedTo,
-            // isCompleted: myDonations.isCompleted,
-            // task: myDonation.task,
-            // uid: myDonation.uid
+  // var pickupDonation = function(myDonations){
+    
+  //   return $q((resolve, reject) =>{
+  //     $http.post(`${FIREBASE_CONFIG.databaseURL}/donations.json`,
+  //        JSON.stringify({
+  //           // assignedTo: myDonations.assignedTo,
+  //           // isCompleted: myDonations.isCompleted,
+  //           // task: myDonation.task,
+  //           // uid: myDonation.uid
 
-            isAgreePickup: editDonation.isAgreePickup,
-             isDelivered: editDonation.isDelivered,
-             pickupDate: editDonation.pickupDate,
-             task: editDonation.task,
-             delivererId: editDonation.delivererId
-         })
-       )
-        .success(function(postResponse){
-          resolve(postResponse);
-        })
-        .error(function(postError){
-          reject(postError);
+  //           isAgreePickup: editDonation.isAgreePickup,
+  //            isDelivered: editDonation.isDelivered,
+  //            pickupDate: editDonation.pickupDate,
+  //            task: editDonation.task,
+  //            delivererId: editDonation.delivererId
+  //        })
+  //      )
+  //       .success(function(postResponse){
+  //         resolve(postResponse);
+  //       })
+  //       .error(function(postError){
+  //         reject(postError);
 
-    });
-  });
-};
+//     });
+//   };
+// };
 
   return {
     getDonationList:getDonationList, 
     postNewDonation:postNewDonation, 
     deleteDonation:deleteDonation, 
     getSingleDonation:getSingleDonation, 
-    editDonation:editDonation,
-    myDonations:myDonations
+    editDonation:editDonation
+    
   };
 });
