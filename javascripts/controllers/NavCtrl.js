@@ -7,12 +7,12 @@ app.controller("NavCtrl", function($scope){
 		url:"#/logout"
   	}, 
   	{
-  		name:"All Items",
+  		name:"Donation List",
   		url:"#/donation/list"
   	}, 
   	{
-  		name:"New Item",
-		url:"#/donation/new"
+  		name:"My Donations",
+		url:"#/mydonations"
 	}
   ];
 });
