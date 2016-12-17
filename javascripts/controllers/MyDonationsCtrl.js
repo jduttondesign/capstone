@@ -14,6 +14,12 @@ app.controller("MyDonationsCtrl", function($scope, $rootScope, $location, Donati
   };
 
   getDonations();
+
+
+  $scope.completeDonation = function(selectedDonation){
+    console.log("selectedDonation", selectedDonation);
+  };
+  
 	// $scope.addNewDonation = function(){
 	//   $scope.newTask.pickupDate = "";
 	//   $scope.newTask.uid = $rootScope.user;

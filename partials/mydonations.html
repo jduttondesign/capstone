@@ -28,11 +28,11 @@
 	<div ng-repeat="thingy in donations | filter: searchText">
 	    <div class="panel panel-default" ng-hide="thingy.isDelivered">
 	        <div class="panel-body">
-	            <div class="col-xs-1"><input type="checkbox" ng-model="thingy.isCompleted" ng-change="inputChange(thingy)"/></div>
 	            <div class="col-xs-7"><a ng-href="#/mydonations/{{thingy.id}}">{{thingy.task}}</a></div>
 	            <div class="col-xs-2">{{thingy.pickupDate}}</div>
 	            <div class="col-xs-1">{{thingy.pickupId}}</div>            
-	            <div class="col-xs-1"><button class="btn btn-danger" ng-click="deleteDonation(thingy.id)"><i class="fa fa-add" aria-hidden="true"></i> </button></div>
+	            <div class="col-xs-1"><button class="btn btn-danger" ng-click="deleteDonation(thingy.id)"><i class="fa fa-trash-o" aria-hidden="true"></i> </button></div>
+	            <div class="col-xs-1"><button class="btn btn-success" ng-click="completeDonation(thingy)"><i class="fa fa-check" aria-hidden="true"></i> </button></div>
 	        </div>
 	    </div>
 	</div>
