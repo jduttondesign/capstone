@@ -4,3 +4,4 @@ lib/node_modules/
 lib/bower_components/
 javascripts/AppConstants.js
 npm-debug.log
+public/
