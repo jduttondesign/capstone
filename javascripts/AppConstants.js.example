@@ -2,10 +2,8 @@
 
 app.constant("FIREBASE_CONFIG", {
    apiKey: "",
-    authDomain: "",
-    databaseURL: "",
-    storageBucket: "",
-    messagingSenderId: ""
+   authDomain: "",
+   databaseURL: "",
+   storageBucket: "",
+   messagingSenderId: ""
 });
-
-console.log("AppConstantsCompleted");
