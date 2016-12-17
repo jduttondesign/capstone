@@ -14,19 +14,21 @@ app.controller("MyDonationsCtrl", function($scope, $rootScope, $location, Donati
   };
 
   getDonations();
-	// $scope.addNewDonation = function(){
-	//   $scope.newTask.pickupDate = "";
-	//   $scope.newTask.uid = $rootScope.user;
-	//   $scope.newTask.isAgreePickup = true;
-	//   $scope.newTask.isDelivered = true;
-	//   $scope.newTask.pickupId = $rootScope.user.uid;
-	//   DonationFactory.postNewDonation($scope.newTask).then(function(itemId){
-	//     $location.url("/mydonations");
-	//     $scope.newTask = {};
-	//   });
- //  	};
-});
 
-// In donationListCtrl and DonationViewCtrl = 
-//click function to change isagreepickup=true and 
-//assign $rootScope.user.id to pickupId.  Then call edit in DonationFactory
+
+  $scope.completeDonation = function(selectedDonation){
+    console.log("selectedDonation", selectedDonation);
+    selectedDonation.isDelivered = true;
+    DonationFactory.editDonation(selectedDonation).then(function(response){
+      getDonations();
+    }); 
+  };
+
+
+   $scope.deleteDonation = function(donationId){
+    DonationFactory.deleteDonation(donationId).then(function(response){
+      getDonations();
+    });
+  };
+  
+});

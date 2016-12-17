@@ -1,5 +1,3 @@
-<h2> Agreed to Pick-up page</h2>
-<!-- This is the search bar -->
 <div class = "row">
 	<div class="col-xs-6 col-xs-offset-3">
 		<div class="input-group">
@@ -10,43 +8,46 @@
 	</div>
 </div>
 
-<h1> {{ thisIsAThingOnScope }} </h1>
-<p> {{ donations.length }} </p>
+<!-- <p> {{ donations.length }} </p> -->
 
 <!--This shows the list of donations from the firebase file-->
 <h3>Donations I have Agreed to Pickup</h3>
 <!-- <div ng-repeat="donation in donations | filter: {isAgreePickup}"> -->
 	<div class="panel panel-default">
 	    <div class="panel-body">
-	        <div class="col-xs-1"></div>
-	        <div class="col-xs-7">Delivered Address</div>
-	        <div class="col-xs-2">Delivered Date</div>          
-	        <div class="col-xs-1"></div>
+	        <div class="col-xs-6">Donation</div>
+	        <div class="col-xs-2">Delivered Date</div>
+	        <div class="col-xs-2">Delivered</div>          
+	        <div class="col-xs-2">Delete</div>
 	    </div>
 	</div>
 
 	<div ng-repeat="thingy in donations | filter: searchText">
 	    <div class="panel panel-default" ng-hide="thingy.isDelivered">
 	        <div class="panel-body">
-	            <div class="col-xs-1"><input type="checkbox" ng-model="thingy.isCompleted" ng-change="inputChange(thingy)"/></div>
-	            <div class="col-xs-7"><a ng-href="#/mydonations/{{thingy.id}}">{{thingy.task}}</a></div>
+	            <div class="col-xs-6"><a ng-href="#/donation/view/{{thingy.id}}">{{thingy.task}}</a></div>
 	            <div class="col-xs-2">{{thingy.pickupDate}}</div>
-	            <div class="col-xs-1">{{thingy.pickupId}}</div>            
-	            <div class="col-xs-1"><button class="btn btn-danger" ng-click="deleteDonation(thingy.id)"><i class="fa fa-add" aria-hidden="true"></i> </button></div>
+	            <div class="col-xs-2"><button class="btn btn-success" ng-click="completeDonation(thingy)"><i class="fa fa-check" aria-hidden="true"></i> </button></div>
+	            <div class="col-xs-2"><button class="btn btn-danger" ng-click="deleteDonation(thingy.id)"><i class="fa fa-trash-o" aria-hidden="true"></i> </button></div>
 	        </div>
 	    </div>
 	</div>
 <!-- </div> -->
 <h3>I have delivered</h3>
+<div class="panel panel-default">
+	    <div class="panel-body">
+	        <div class="col-xs-6">Donation</div>
+	        <div class="col-xs-2">Delivered Date</div>
+	        <div class="col-xs-2">Delivered</div>          
+	        <div class="col-xs-2">Delete</div>
+	    </div>
+	</div>
 <div ng-repeat="donation in donations">
 	<div class="panel panel-default" ng-show="donation.isDelivered">
 	    <div class="panel-body">
-	        <div class="col-xs-1"><input type="checkbox" name="" ng-model="donation.isCompleted" ng-change="inputChange(donation)"></div>
-	        <div class="col-xs-9"><a href="#/donation/view/{{donation.id}}">{{donation.task}}</a></div>
-	        <div class="col-xs-1">{{donation.assignedTo}}</div>
-	        <div class="col-xs-1"><button class="btn btn-danger fa fa-trash-o" ng-click="deleteDonation(donation.id)"></button></div>
-
-	        <div class="col-xs-2"><button class="btn btn-danger" ng-click="deleteDonation(thingy.id)"><i class="fa fa-add" aria-hidden="true"></i> </button>Pick-up</div>
+	        <div class="col-xs-6">{{donation.task}}</div>
+	        <div class="col-xs-2">{{donation.pickupDate}}</div>
+	        <div class="col-xs-2 col-xs-offset-2"><button class="btn btn-danger fa fa-trash-o" ng-click="deleteDonation(donation.id)"></button></div>
 	    </div>
 	</div>
 </div>

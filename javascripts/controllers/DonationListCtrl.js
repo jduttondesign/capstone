@@ -5,6 +5,7 @@ app.controller("DonationListCtrl", function($scope, $rootScope, DonationFactory)
   
   let getDonations = function(){  
     DonationFactory.getDonationList($rootScope.user).then(function(fbDonations){
+      console.log(fbDonations);
       $scope.donations = fbDonations;
     });
   };
