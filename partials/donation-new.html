@@ -1,14 +1,33 @@
-<h1>HELLO 3</h1>
+
 <h3>New Donation</h3>
 <form>
     <div class="form-group">
-        <label>Donation Description</label>
-            <input type="text" class="form-control" placeholder="food description" ng-model="newTask.task">
+        <label>Donation Description and Address</label>
+            <input type="text" class="form-control" placeholder="food description and address" ng-model="newTask.task">
     </div>
     <div class="form-group">
-        <label>Donor Name and Address</label>
-        <input type="text" class="form-control" placeholder="name street city zip" ng-model="newTask.assignedTo">
+        <label>Pick-up by Date</label>
+        <input type="text" class="form-control" placeholder="fresh to eat date" ng-model="newTask.pickupDate">
     </div>
-    <button type="button" class="btn btn-primary btn-lg col-xs-2 " ng-click="addNewItem()">Add</button>
+    
+    <button type="button" class="btn btn-primary btn-lg col-xs-2 " ng-click="addNewDonation()">Add</button>
 </form>
 
+<h3>Donations to be Picked up</h3>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-7">Pick-up Address</div>
+        <div class="col-xs-2">Pick-up Date</div>          
+        <div class="col-xs-1"></div>
+    </div>
+</div>
+<h3>Donations to be Picked up</h3>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-7">Pick-up Address</div>
+        <div class="col-xs-2">Pick-up Date</div>          
+        <div class="col-xs-1"></div>
+    </div>
+</div>

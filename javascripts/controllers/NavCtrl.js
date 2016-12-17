@@ -1,5 +1,4 @@
 "use strict";
-console.log("loaded NavCtrl");
 
 app.controller("NavCtrl", function($scope){
   $scope.navItems = [
@@ -8,12 +7,12 @@ app.controller("NavCtrl", function($scope){
 		url:"#/logout"
   	}, 
   	{
-  		name:"All Items",
-  		url:"#/donations/list"
+  		name:"Donation List",
+  		url:"#/donation/list"
   	}, 
   	{
-  		name:"New Item",
-		url:"#/donations/new"
+  		name:"My Donations",
+		url:"#/mydonations"
 	}
   ];
 });

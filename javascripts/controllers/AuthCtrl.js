@@ -1,11 +1,9 @@
 "use strict";
-console.log("loaded AuthCtrl");
-
 app.controller("AuthCtrl", function($scope, $rootScope, $location, AuthFactory, UserFactory){
 	$scope.loginContainer = true;
 	$scope.registerContainer = false;
 	$scope.login = {
-		email: "a@a.com",
+		email: "j@j.com",
 		password: "123456"
 	};
 
@@ -17,15 +15,13 @@ app.controller("AuthCtrl", function($scope, $rootScope, $location, AuthFactory, 
 
 	let logMeIn = function(loginStuff){
 		AuthFactory.authenticate(loginStuff).then(function(didLogin){
-			console.log("didLogin", didLogin);
 			return UserFactory.getUser(didLogin.uid);
 		})
 		 .then(function(userCreds){
-		 	console.log("userCreds", userCreds);
 		 	$rootScope.user = userCreds;
 		 	$scope.login = {};
 		 	$scope.register = {};
-		 	$location.url("/list");
+		 	$location.url("/donation/list");
 		 });
 	};
 
@@ -40,7 +36,6 @@ app.controller("AuthCtrl", function($scope, $rootScope, $location, AuthFactory, 
 	};
 
 	$scope.registerUser = function(registerNewUser){
-		console.log("registerNewUser", registerNewUser);
 		AuthFactory.registerWithEmail(registerNewUser).then(function(didRegister){
 			registerNewUser.uid = didRegister.uid;
 			return UserFactory.addUser(registerNewUser);
@@ -50,7 +45,6 @@ app.controller("AuthCtrl", function($scope, $rootScope, $location, AuthFactory, 
 	};
 
 	$scope.loginUser = function(loginNewUser){
-		console.log("loginUser", loginNewUser);
 		logMeIn(loginNewUser);
 	};
 });

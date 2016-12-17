@@ -1,5 +1,4 @@
 "use strict";
-console.log("loaded AppConfig");
 
 let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
 	if(AuthFactory.isAuthenticated()){
@@ -36,32 +35,35 @@ app.config(function($routeProvider){
 			templateUrl: 'partials/auth.html',
 			controller:'AuthCtrl'
 		})
-		.when('/list', {
-			templateUrl: 'partials/volunteer-list.html',
-			controller: 'ListCtrl'
-			// resolve: {isAuth}
+		.when('/donation/list', {
+			templateUrl:'partials/donation-list.html',
+			controller: 'DonationListCtrl',
+			resolve: {isAuth}
 		})
-		.when('/new', {
-			templateUrl: 'partials/donation-new.html',
-			controller: 'NewCtrl'
-			// resolve: {isAuth}
+		.when('/donation/new', {
+			templateUrl:'partials/donation-new.html',
+			controller: 'DonationNewCtrl',
+			 resolve: {isAuth}
 		})
-		.when('/view/:id', {
+		.when('/donation/view/:id', {
 			templateUrl: 'partials/donation-view.html',
-			controller: 'DonationCtrl'
-			// resolve: {isAuth}
+			controller: 'DonationViewCtrl',
+			 resolve: {isAuth}
 		})
-		.when('/edit/:id', {
+		.when('/donation/edit/:id', {
 			templateUrl: 'partials/donation-edit.html',
-			controller:'EditCtrl'
-			// resolve: {isAuth}
+			controller:'DonationEditCtrl',
+			resolve: {isAuth}
+		})
+		.when('/mydonations', {
+			templateUrl: 'partials/mydonations.html',
+			controller:'MyDonationsCtrl',
+			resolve: {isAuth}
 		})
 		.when('/logout', {
 			templateUrl: 'partials/auth.html',
-			controller: 'AuthCtrl'
-			// resolve: {isAuth}
+			controller: 'AuthCtrl',
+			resolve: {isAuth}
 		})
 		.otherwise('/auth');
 });
-
-console.log("AppConfig loaded");

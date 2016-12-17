@@ -1,0 +1,39 @@
+<h2>Donation List</h2>
+
+<!-- This is the search bar -->
+<div class = "row">
+	<div class="col-xs-6 col-xs-offset-3">
+		<div class="input-group">
+		<span class="input-group-btn">
+			<button class="btn btn-default"><i class="fa fa-search"></i></button></span>
+		<input type="text" class="form-control" placeholder="Search for..." ng-model="searchText">
+		</div>
+	</div>
+</div>
+
+<h3>Add a donation to the list below</h3>
+<button><a ng-href="#/donation/new">Click</a></button>
+
+<!--This shows the list of donations from the firebase file-->
+<h3>Donations to be Picked up</h3>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="col-xs-10">Pick-up Address</div>
+        <div class="col-xs-2">Pick-up Date</div>          
+    </div>
+</div>
+
+<div ng-repeat="thingy in donations | filter: searchText">
+    <div class="panel panel-default" ng-hide="thingy.isAgreePickup">
+        <div class="panel-body">
+            <div class="col-xs-7"><a ng-href="#/donation/view/{{thingy.id}}">{{thingy.task}}</a></div>
+            <div class="col-xs-3">{{thingy.pickupDate}}</div>          
+           
+            <div class="col-xs-1"><button class="btn btn-danger" ng-click="deleteDonation(thingy.id)"><i class="fa fa-add" aria-hidden="true"></i> </button>Delete</div>
+
+
+            <div class="col-xs-1"><button class="btn btn-success" ng-click="pickupDonation(thingy)"><i class="fa fa-add" aria-hidden="true"></i> </button>Pick-up</div>
+        </div>
+    </div>
+</div>
+</div>

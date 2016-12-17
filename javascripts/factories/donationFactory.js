@@ -1,18 +1,16 @@
 "use strict";
-console.log("loaded DonationFactory");
 
 app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
-
-  var getItemList = function(userId){
+  var getDonationList = function(userId){
     return $q((resolve, reject) => {
       $http.get(`${FIREBASE_CONFIG.databaseURL}/donations.json`)
         .success(function(response){
-            let items = [];
+            let donations = [];
             Object.keys(response).forEach(function(key){
               response[key].id = key;
-              items.push(response[key]);
+              donations.push(response[key]);
             });
-          resolve(items);
+          resolve(donations);
         })
         .error(function(errorResponse){
           reject(errorResponse);
@@ -20,14 +18,16 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
   
-  var postNewItem = function(newItem){
+  var postNewDonation = function(newDonation){
+    //console.log("William's donations",newDonation);
     return $q((resolve, reject) =>{
       $http.post(`${FIREBASE_CONFIG.databaseURL}/donations.json`,
          JSON.stringify({
-            assignedTo: newItem.assignedTo,
-            isCompleted: newItem.isCompleted,
-            task: newItem.task,
-            uid: newItem.uid
+            isAgreePickup: newDonation.isAgreePickup,
+            isDelivered: newDonation.isDelivered,
+            pickupDate: newDonation.pickupDate,
+            task: newDonation.task,
+            delivererId: newDonation.delivererId,
          })
        )
         .success(function(postResponse){
@@ -39,9 +39,9 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
 
-  var deleteItem = function(itemId){
+  var deleteDonation = function(donationId){
     return $q((resolve, reject) => {
-      $http.delete(`${FIREBASE_CONFIG.databaseURL}/donations/${itemId}.json`)
+      $http.delete(`${FIREBASE_CONFIG.databaseURL}/donations/${donationId}.json`)
       .success(function(deleteResponse){
         resolve(deleteResponse);
       })
@@ -51,9 +51,9 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
 
-  var getSingleItem = function(itemId){
+  var getSingleDonation = function(donationId){
     return $q((resolve, reject) => {
-      $http.get(`${FIREBASE_CONFIG.databaseURL}/donations/${itemId}.json`)
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/donations/${donationId}.json`)
       .success(function(getSingleResponse){
         resolve(getSingleResponse);
       })
@@ -63,14 +63,23 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
 
-  var editItem = function(editItem){
+  var editDonation = function(editDonation){
+    console.log("editDonation", editDonation);
     return $q((resolve, reject) =>{
-      $http.put(`${FIREBASE_CONFIG.databaseURL}/donations/${editItem.id}.json`,
-         JSON.stringify({
-            assignedTo: editItem.assignedTo,
-            isCompleted: editItem.isCompleted,
-            task: editItem.task,
-            uid: editItem.uid
+      // https://appname.firebase.com/donations/92309f023jf.json
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/donations/${editDonation.id}.json`,
+         JSON.stringify({ 
+            //assignedTo: editDonation.assignedTo,
+            //isCompleted: editDonation.isCompleted,
+            //task: editDonation.task,
+            //uid: editDonation.uid
+
+             isAgreePickup: editDonation.isAgreePickup,
+             isDelivered: editDonation.isDelivered,
+             pickupDate: editDonation.pickupDate,
+             task: editDonation.task,
+             pickupId: editDonation.pickupId
+
          })
        )
         .success(function(editResponse){
@@ -82,11 +91,39 @@ app.factory("DonationFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
 
+  // var pickupDonation = function(myDonations){
+    
+  //   return $q((resolve, reject) =>{
+  //     $http.post(`${FIREBASE_CONFIG.databaseURL}/donations.json`,
+  //        JSON.stringify({
+  //           // assignedTo: myDonations.assignedTo,
+  //           // isCompleted: myDonations.isCompleted,
+  //           // task: myDonation.task,
+  //           // uid: myDonation.uid
+
+  //           isAgreePickup: editDonation.isAgreePickup,
+  //            isDelivered: editDonation.isDelivered,
+  //            pickupDate: editDonation.pickupDate,
+  //            task: editDonation.task,
+  //            delivererId: editDonation.delivererId
+  //        })
+  //      )
+  //       .success(function(postResponse){
+  //         resolve(postResponse);
+  //       })
+  //       .error(function(postError){
+  //         reject(postError);
+
+//     });
+//   };
+// };
+
   return {
-    getItemList:getItemList, 
-    postNewItem:postNewItem, 
-    deleteItem:deleteItem, 
-    getSingleItem:getSingleItem, 
-    editItem:editItem
+    getDonationList:getDonationList, 
+    postNewDonation:postNewDonation, 
+    deleteDonation:deleteDonation, 
+    getSingleDonation:getSingleDonation, 
+    editDonation:editDonation
+    
   };
 });

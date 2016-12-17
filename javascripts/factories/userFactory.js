@@ -1,5 +1,4 @@
 "use strict";
-console.log("loaded UserFactory");
 
 app.factory("UserFactory", function($q, $http, FIREBASE_CONFIG){
 
