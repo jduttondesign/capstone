@@ -1,3 +1,17 @@
+   "users": {
+        "user0": {
+            "uid": "J3wyzUVqGnYs1rKRvgTWiPEk4QE3",
+            "username": "j@j.com",
+            "password": "123456"
+        },
+        "user1": {
+            "uid": "CyNSlRSaOmgkfedzUAZvZvqHq8k2",
+            "username": "z@z.com",
+            "password": "123456"
+        },
+       
+    },
+
 {
   "donations": {
     "donation0": {

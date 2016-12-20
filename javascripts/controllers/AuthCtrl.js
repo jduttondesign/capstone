@@ -14,11 +14,12 @@ app.controller("AuthCtrl", function($scope, $rootScope, $location, AuthFactory, 
 	}
 
 	let logMeIn = function(loginStuff){
-		AuthFactory.authenticate(loginStuff).then(function(didLogin){
-			return UserFactory.getUser(didLogin.uid);
-		})
+		 AuthFactory.authenticate(loginStuff)//.then(function(didLogin){ 
+		// 	return UserFactory.getUser(didLogin.uid);
+		// })
 		 .then(function(userCreds){
 		 	$rootScope.user = userCreds;
+		 	console.log("$rootScope.user", $rootScope.user);
 		 	$scope.login = {};
 		 	$scope.register = {};
 		 	$location.url("/donation/list");

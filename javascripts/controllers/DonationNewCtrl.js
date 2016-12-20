@@ -4,6 +4,7 @@ app.controller("DonationNewCtrl", function($scope, $rootScope, $location, Donati
 
 	$scope.addNewDonation = function(){
 	  $scope.newTask.delivererId = $rootScope.user.uid;
+	  console.log("$rootScope.user", $rootScope.user);
 	  $scope.newTask.isAgreePickup = false;
 	  $scope.newTask.isDelivered = false;
 	  DonationFactory.postNewDonation($scope.newTask).then(function(itemId){

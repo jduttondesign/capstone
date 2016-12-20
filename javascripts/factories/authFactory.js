@@ -22,7 +22,7 @@ app.factory("AuthFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
   let authenticate = (credentials) => {
     return $q((resolve, reject) => {
       firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
-        .then((authData) =>{
+        .then((authData) =>{ 
           resolve(authData);
         })
         .catch((error)=>{
